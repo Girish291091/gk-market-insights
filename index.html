@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GK | Market Insights - Girish Krishna Moorthy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/lucide.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            color: white;
+        }
+
+        .nav-brand {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 1;
+        }
+
+        .contact-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .contact-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            color: white;
+            padding: 80px 0;
+        }
+
+        .hero-subtitle {
+            background: rgba(255, 255, 255, 0.2);
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .hero-tagline {
+            font-size: 20px;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .hero-description {
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            opacity: 0.8;
+        }
+
+        .stats-row {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            opacity: 0.8;
+            color: white;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #667eea;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-primary:hover, .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Main Content */
+        .main-content {
+            background: white;
+            border-radius: 20px 20px 0 0;
+            margin-top: 50px;
+            padding: 60px 0;
+        }
+
+        .section {
+            margin-bottom: 80px;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 50px;
+            font-size: 18px;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: #f8fafc;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .service-icon {
+            width: 50px;
+            height: 50px;
+            margin: 0 auto 20px;
+            color: #667eea;
+        }
+
+        .service-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .service-desc {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Case Studies */
+        .case-studies {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .case-study {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 15px;
+            padding: 30px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .case-study:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .case-result {
+            background: #10b981;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .case-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .case-summary {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Process */
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .process-step {
+            text-align: center;
+            padding: 30px;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: #667eea;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .step-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .step-desc {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial {
+            background: #f8fafc;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .testimonial-quote {
+            font-style: italic;
+            color: #374151;
+            margin-bottom: 20px;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .testimonial-name {
+            font-weight: 600;
+            color: #1f2937;
+        }
+
+        /* Pricing */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .pricing-card {
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+
+        .pricing-card:hover {
+            border-color: #667eea;
+            transform: translateY(-5px);
+        }
+
+        .pricing-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .pricing-price {
+            font-size: 32px;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 30px;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .pricing-features li {
+            padding: 8px 0;
+            color: #666;
+        }
+
+        .pricing-features li:before {
+            content: "✓";
+            color: #10b981;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .enquire-btn {
+            background: #667eea;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s;
+            display: inline-block;
+        }
+
+        .enquire-btn:hover {
+            background: #5a67d8;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #f8fafc;
+            padding: 40px;
+            border-radius: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #374151;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .stats-row {
+                gap: 20px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+        }
+
+        /* Utility Classes */
+        .pill {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .mb-4 {
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container">
+            <div class="nav" style="margin: 0;">
+                <div class="nav-brand">GK | Market Insights</div>
+                <ul class="nav-links">
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#case-studies">Case Studies</a></li>
+                    <li><a href="#process">Process</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <a href="#contact" class="contact-btn">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-subtitle">B2B • Manufacturing • Electronics • Industrial Automation</div>
+            <h1>Girish Krishna Moorthy</h1>
+            <div class="hero-tagline">Freelance Market Research & Intelligence</div>
+            <p class="hero-description">
+                I help industrial companies make confident, data-driven decisions. From value chain analysis to competitive benchmarking - delivered with clarity and speed.
+            </p>
+            
+            <div class="stats-row">
+                <div class="stat">
+                    <div class="stat-value">10+ yrs</div>
+                    <div class="stat-label">experience</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">3000+</div>
+                    <div class="stat-label">qualified leads generated</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">50+</div>
+                    <div class="stat-label">new opportunities identified</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">25%</div>
+                    <div class="stat-label">strategy impact</div>
+                </div>
+            </div>
+
+            <div class="hero-buttons">
+                <a href="#contact" class="btn-primary">Start a Project</a>
+                <a href="#case-studies" class="btn-secondary">View Case Studies</a>
+                <a href="#contact" class="btn-secondary">Connect</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="container">
+            <!-- What I Can Do Section -->
+            <section class="section">
+                <h2 class="section-title">What I can do for you</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">📊</div>
+                        <h3 class="service-title">Market Intelligence</h3>
+                        <p class="service-desc">Segment classification, Value chain analysis, Deep dive analysis, OEM matrix, Market insights</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🔍</div>
+                        <h3 class="service-title">Competitive Intelligence</h3>
+                        <p class="service-desc">Benchmarking, Product, Pricing and Financial analysis</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">👥</div>
+                        <h3 class="service-title">Primary research</h3>
+                        <p class="service-desc">Expert interview, Go-to-Field</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🎯</div>
+                        <h3 class="service-title">Prospecting</h3>
+                        <p class="service-desc">Company profiling, Prospects identification, Leads generation</p>
+                    </div>
+                </div>
+                <div class="text-center" style="margin-top: 40px;">
+                    <span class="pill">NDA-friendly</span>
+                    <span class="pill">Rapid turnarounds</span>
+                    <span class="pill">Source-backed insights</span>
+                </div>
+            </section>
+
+            <!-- Services Section -->
+            <section id="services" class="section">
+                <h2 class="section-title">Services</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">📈</div>
+                        <h3 class="service-title">Market Landscape</h3>
+                        <ul style="text-align: left; color: #666;">
+                            <li>Size, growth, segmentation</li>
+                            <li>Trends & drivers</li>
+                            <li>Requirements</li>
+                        </ul>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🧭</div>
+                        <h3 class="service-title">Opportunity Scan</h3>
+                        <ul style="text-align: left; color: #666;">
+                            <li>Market mapping</li>
+                            <li>Classification of neighboring and bordering market segments</li>
+                        </ul>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🔄</div>
+                        <h3 class="service-title">Enablement</h3>
+                        <ul style="text-align: left; color: #666;">
+                            <li>Sales prospects</li>
+                            <li>leads identification</li>
+                            <li>Persona briefs</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="text-center" style="margin-top: 40px;">
+                    <a href="#contact" class="enquire-btn">Get a tailored scope</a>
+                </div>
+            </section>
+
+            <!-- Case Studies Section -->
+            <section id="case-studies" class="section">
+                <h2 class="section-title">Case Studies</h2>
+                <div class="case-studies">
+                    <div class="case-study">
+                        <div class="case-result">Result: 15% impact on strategic decisions</div>
+                        <h3 class="case-title">Interconnect Products: Expansion Play</h3>
+                        <p class="case-summary">Mapped growth in hydrogen, batteries, and semiconductors; prioritized 12 sub-segments with quantified TAM/SAM/SOM; built geographic rollout plan.</p>
+                    </div>
+                    <div class="case-study">
+                        <div class="case-result">Result: 20% impact on strategic decisions</div>
+                        <h3 class="case-title">Industrial Automation Products in Machineries</h3>
+                        <p class="case-summary">Mapped growth in semiconductors, PCB dispensing, Medical equipment's cables, solar, batteries; prioritized sub-segments with quantified TAM/SAM/SOM.</p>
+                    </div>
+                    <div class="case-study">
+                        <div class="case-result">Result: 200+ qualified leads; 10+ new opps</div>
+                        <h3 class="case-title">Lead Gen via Insights</h3>
+                        <p class="case-summary">Company profiling, Target lists, Contact details.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Process Section -->
+            <section id="process" class="section">
+                <h2 class="section-title">Process</h2>
+                <div class="process-steps">
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <h3 class="step-title">Scope</h3>
+                        <p class="step-desc">Kickoff, hypotheses, deliverables, and timeline.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <h3 class="step-title">Research</h3>
+                        <p class="step-desc">Sources: Primary research, desk research, databases.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <h3 class="step-title">Synthesize</h3>
+                        <p class="step-desc">Turn data into decisions: frameworks, briefs.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">4</div>
+                        <h3 class="step-title">Enable</h3>
+                        <p class="step-desc">Handovers: decks, and working sheets.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Testimonials Section -->
+            <section id="testimonials" class="section">
+                <h2 class="section-title">Testimonials</h2>
+                <div class="testimonials">
+                    <div class="testimonial">
+                        <p class="testimonial-quote">"Girish is a committed and detail-oriented professional who quickly understands complex topics and delivers valuable insights."</p>
+                        <div class="testimonial-name">Director, Interconnects (EU)</div>
+                    </div>
+                    <div class="testimonial">
+                        <p class="testimonial-quote">"I highly recommend Girish for market research. He consistently delivers exceptional results, exceeding expectations."</p>
+                        <div class="testimonial-name">Research Manager, (APAC)</div>
+                    </div>
+                    <div class="testimonial">
+                        <p class="testimonial-quote">"The lead-gen insights directly fueled pipeline. Highly recommend."</p>
+                        <div class="testimonial-name">Head of Sales, Components (EU)</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Pricing Section -->
+            <section class="section">
+                <h2 class="section-title">Pricing</h2>
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <h3 class="pricing-title">Demo</h3>
+                        <div class="pricing-price">Free</div>
+                        <ul class="pricing-features">
+                            <li>Summary slides</li>
+                        </ul>
+                        <a href="#contact" class="enquire-btn">Enquire</a>
+                    </div>
+                    <div class="pricing-card">
+                        <h3 class="pricing-title">Starter Brief</h3>
+                        <div class="pricing-price">On request</div>
+                        <ul class="pricing-features">
+                            <li>2 week project</li>
+                            <li>3-5 page insight brief</li>
+                            <li>Quick market scan</li>
+                            <li>2 stakeholder calls</li>
+                            <li>Slides + Raw data</li>
+                        </ul>
+                        <a href="#contact" class="enquire-btn">Enquire</a>
+                    </div>
+                    <div class="pricing-card">
+                        <h3 class="pricing-title">Growth Sprint</h3>
+                        <div class="pricing-price">On request</div>
+                        <ul class="pricing-features">
+                            <li>3-4 week project</li>
+                            <li>Sizing + CI actions</li>
+                            <li>Pipeline insights & enablement</li>
+                            <li>Slides + Raw data + Sheets</li>
+                        </ul>
+                        <a href="#contact" class="enquire-btn">Enquire</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="section">
+                <h2 class="section-title">Contact</h2>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="you@company.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">What do you need?</label>
+                        <textarea id="message" name="message" placeholder="Describe your project or requirements..." required></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="enquire-btn">Send Message</button>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Simple form handling
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! I will get back to you soon.');
+            this.reset();
+        });
+
+        // Add animation on scroll (simple fade-in effect)
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Apply animation to service cards, case studies, etc.
+        document.querySelectorAll('.service-card, .case-study, .testimonial, .pricing-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
