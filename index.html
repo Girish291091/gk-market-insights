@@ -1,1575 +1,2055 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GK</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
-        :root {
-            --primary-color: #0066FF;
-            --primary-dark: #0052CC;
-            --primary-light: #3385FF;
-            --secondary-color: #8B5CF6;
-            --accent-color: #06B6D4;
-            --success-color: #10B981;
-            --warning-color: #F59E0B;
-            --error-color: #EF4444;
-            --text-primary: #0A0A0A;
-            --text-secondary: #4A5568;
-            --text-muted: #718096;
-            --bg-primary: #FFFFFF;
-            --bg-secondary: #F8FAFC;
-            --bg-tertiary: #EDF2F7;
-            --bg-glass: rgba(255, 255, 255, 0.08);
-            --border-color: #E2E8F0;
-            --border-glass: rgba(255, 255, 255, 0.12);
-            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
-            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
-            --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.12);
-            --shadow-xl: 0 24px 64px rgba(0, 0, 0, 0.15);
-            --shadow-glow: 0 0 40px rgba(0, 102, 255, 0.15);
-            --gradient-primary: linear-gradient(135deg, #0066FF 0%, #8B5CF6 100%);
-            --gradient-secondary: linear-gradient(135deg, #06B6D4 0%, #10B981 100%);
-            --gradient-accent: linear-gradient(135deg, #FF6B6B 0%, #FFE66D 100%);
-            --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
-        }
+      :root {
+        --primary-color: #0066ff;
+        --primary-dark: #0052cc;
+        --primary-light: #3385ff;
+        --secondary-color: #8b5cf6;
+        --accent-color: #06b6d4;
+        --success-color: #10b981;
+        --warning-color: #f59e0b;
+        --error-color: #ef4444;
+        --text-primary: #0a0a0a;
+        --text-secondary: #4a5568;
+        --text-muted: #718096;
+        --bg-primary: #ffffff;
+        --bg-secondary: #f8fafc;
+        --bg-tertiary: #edf2f7;
+        --bg-glass: rgba(255, 255, 255, 0.08);
+        --border-color: #e2e8f0;
+        --border-glass: rgba(255, 255, 255, 0.12);
+        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+        --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+        --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.12);
+        --shadow-xl: 0 24px 64px rgba(0, 0, 0, 0.15);
+        --shadow-glow: 0 0 40px rgba(0, 102, 255, 0.15);
+        --gradient-primary: linear-gradient(135deg, #0066ff 0%, #8b5cf6 100%);
+        --gradient-secondary: linear-gradient(135deg, #06b6d4 0%, #10b981 100%);
+        --gradient-accent: linear-gradient(135deg, #ff6b6b 0%, #ffe66d 100%);
+        --gradient-glass: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.1) 0%,
+          rgba(255, 255, 255, 0.05) 100%
+        );
+      }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            color: var(--text-primary);
-            background: var(--gradient-primary);
-            min-height: 100vh;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-        }
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, sans-serif;
+        line-height: 1.6;
+        color: var(--text-primary);
+        background: var(--gradient-primary);
+        min-height: 100vh;
+        overflow-x: hidden;
+        scroll-behavior: smooth;
+      }
 
+      .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 32px;
+      }
+
+      /* Premium Background System */
+      .hero-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        overflow: hidden;
+        z-index: 0;
+      }
+
+      .bg-mesh {
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+            circle at 20% 80%,
+            rgba(139, 92, 246, 0.15) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 80% 20%,
+            rgba(6, 182, 212, 0.15) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 40% 40%,
+            rgba(16, 185, 129, 0.1) 0%,
+            transparent 50%
+          );
+        animation: meshRotate 20s ease-in-out infinite;
+      }
+
+      @keyframes meshRotate {
+        0%,
+        100% {
+          transform: rotate(0deg) scale(1);
+        }
+        33% {
+          transform: rotate(120deg) scale(1.1);
+        }
+        66% {
+          transform: rotate(240deg) scale(0.9);
+        }
+      }
+
+      .grid-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: linear-gradient(
+            rgba(255, 255, 255, 0.03) 1px,
+            transparent 1px
+          ),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        background-size: 50px 50px;
+        animation: gridMove 30s linear infinite;
+      }
+
+      @keyframes gridMove {
+        0% {
+          transform: translate(0, 0);
+        }
+        100% {
+          transform: translate(50px, 50px);
+        }
+      }
+
+
+      /* Premium Navigation */
+      .nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        backdrop-filter: blur(20px) saturate(180%);
+        background: var(--bg-glass);
+        border-bottom: 1px solid var(--border-glass);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .nav.scrolled {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        box-shadow: var(--shadow-md);
+      }
+
+      .nav-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 24px 0;
+        transition: padding 0.3s ease;
+      }
+
+      .nav.scrolled .nav-inner {
+        padding: 16px 0;
+      }
+
+      .nav-brand {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 28px;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        color: white;
+      }
+
+      .nav.scrolled .nav-brand {
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        color: unset;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 40px;
+        list-style: none;
+      }
+
+      .nav-links a {
+        color: rgba(255, 255, 255, 0.9);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 16px;
+        position: relative;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        padding: 8px 0;
+      }
+
+      .nav.scrolled .nav-links a {
+        color: var(--text-primary);
+      }
+
+      .nav-links a::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--gradient-secondary);
+        transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .nav-links a:hover::before {
+        width: 100%;
+      }
+
+      .nav-links a:hover {
+        transform: translateY(-2px);
+      }
+
+      .contact-btn {
+        background: var(--bg-glass);
+        color: white;
+        padding: 12px 28px;
+        border: 1px solid var(--border-glass);
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 16px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        backdrop-filter: blur(10px);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .nav.scrolled .contact-btn {
+        background: var(--gradient-primary);
+        color: white;
+        border-color: transparent;
+      }
+
+      .contact-btn::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: left 0.5s;
+      }
+
+      .contact-btn:hover::before {
+        left: 100%;
+      }
+
+      .contact-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-glow);
+      }
+
+      /* Hero Section - Premium Design */
+      .hero {
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        color: white;
+        padding: 120px 0 80px;
+        z-index: 1;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        background: var(--bg-glass);
+        backdrop-filter: blur(20px);
+        padding: 12px 24px;
+        border-radius: 50px;
+        border: 1px solid var(--border-glass);
+        font-size: 14px;
+        font-weight: 500;
+        margin-bottom: 32px;
+        animation: fadeInUp 0.8s ease-out;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-badge::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.1),
+          transparent
+        );
+        animation: shimmer 2s infinite;
+      }
+
+      @keyframes shimmer {
+        0% {
+          left: -100%;
+        }
+        100% {
+          left: 100%;
+        }
+      }
+
+      .hero-badge .badge-icon {
+        width: 8px;
+        height: 8px;
+        background: var(--gradient-secondary);
+        border-radius: 50%;
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.5;
+          transform: scale(1.2);
+        }
+      }
+
+      .hero h1 {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: clamp(48px, 6vw, 84px);
+        font-weight: 800;
+        line-height: 1.1;
+        margin-bottom: 24px;
+        letter-spacing: -0.02em;
+        animation: fadeInUp 0.8s ease-out 0.2s both;
+        background: linear-gradient(
+          135deg,
+          #ffffff 0%,
+          rgba(255, 255, 255, 0.8) 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .hero-tagline {
+        font-size: 28px;
+        font-weight: 500;
+        margin-bottom: 32px;
+        opacity: 0.9;
+        animation: fadeInUp 0.8s ease-out 0.4s both;
+        background: var(--gradient-secondary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .hero-description {
+        font-size: 20px;
+        line-height: 1.8;
+        max-width: 720px;
+        margin: 0 auto 48px;
+        opacity: 0.85;
+        animation: fadeInUp 0.8s ease-out 0.6s both;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Premium Stats Row */
+      .stats-row {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 32px;
+        margin: 64px 0;
+        animation: fadeInUp 0.8s ease-out 0.8s both;
+      }
+
+      .stat {
+        background: var(--bg-glass);
+        backdrop-filter: blur(20px);
+        border: 1px solid var(--border-glass);
+        border-radius: 24px;
+        padding: 32px 24px;
+        text-align: center;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .stat::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: var(--gradient-secondary);
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+      }
+
+      .stat:hover::before {
+        transform: scaleX(1);
+      }
+
+      .stat:hover {
+        transform: translateY(-12px);
+        box-shadow: var(--shadow-xl);
+        border-color: rgba(255, 255, 255, 0.2);
+      }
+
+      .stat-value {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 36px;
+        font-weight: 800;
+        margin-bottom: 8px;
+        background: var(--gradient-secondary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .stat-label {
+        font-size: 14px;
+        font-weight: 500;
+        opacity: 0.8;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      /* Premium Button System */
+      .hero-buttons {
+        display: flex;
+        gap: 24px;
+        justify-content: center;
+        margin-top: 48px;
+        flex-wrap: wrap;
+        animation: fadeInUp 0.8s ease-out 1s both;
+      }
+
+      .btn {
+        padding: 16px 32px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 16px;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        border: none;
+        cursor: pointer;
+      }
+
+      .btn-primary {
+        background: white;
+        color: var(--primary-color);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .btn-primary::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: var(--gradient-primary);
+        transition: left 0.3s ease;
+        z-index: -1;
+      }
+
+      .btn-primary:hover::before {
+        left: 0;
+      }
+
+      .btn-primary:hover {
+        color: white;
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-glow);
+      }
+
+      .btn-secondary {
+        background: var(--bg-glass);
+        color: white;
+        border: 1px solid var(--border-glass);
+        backdrop-filter: blur(20px);
+      }
+
+      .btn-secondary:hover {
+        background: white;
+        color: var(--primary-color);
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .btn-outline {
+        background: transparent;
+        color: white;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(10px);
+      }
+
+      .btn-outline:hover {
+        background: white;
+        color: var(--primary-color);
+        border-color: white;
+        transform: translateY(-4px);
+      }
+
+      /* Main Content - Premium Design */
+      .main-content {
+        background: linear-gradient(
+          180deg,
+          var(--bg-primary) 0%,
+          var(--bg-secondary) 100%
+        );
+        border-radius: 48px 48px 0 0;
+        margin-top: 80px;
+        padding: 120px 0;
+        position: relative;
+        z-index: 2;
+        box-shadow: 0 -20px 80px rgba(0, 0, 0, 0.1);
+      }
+
+      .section {
+        margin-bottom: 160px;
+        position: relative;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 80px;
+        position: relative;
+      }
+
+
+      .section-title {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: clamp(40px, 5vw, 64px);
+        font-weight: 800;
+        line-height: 1.2;
+        margin-bottom: 24px;
+        letter-spacing: -0.02em;
+        color: var(--text-primary);
+        background: linear-gradient(
+          135deg,
+          var(--text-primary) 0%,
+          var(--text-secondary) 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .section-subtitle {
+        font-size: 20px;
+        color: var(--text-secondary);
+        max-width: 600px;
+        margin: 0 auto;
+        line-height: 1.7;
+      }
+
+      /* Premium Service Cards */
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 40px;
+      }
+
+      .service-card {
+        background: linear-gradient(
+          135deg,
+          var(--bg-primary) 0%,
+          rgba(255, 255, 255, 0.8) 100%
+        );
+        backdrop-filter: blur(20px);
+        border: 1px solid var(--border-color);
+        border-radius: 32px;
+        padding: 48px 40px;
+        text-align: center;
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+        box-shadow: var(--shadow-sm);
+      }
+
+      .service-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: var(--gradient-primary);
+        transform: scaleX(0);
+        transition: transform 0.4s ease;
+      }
+
+      .service-card::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(0, 102, 255, 0.05),
+          transparent
+        );
+        transition: left 0.6s ease;
+      }
+
+      .service-card:hover::before {
+        transform: scaleX(1);
+      }
+
+      .service-card:hover::after {
+        left: 100%;
+      }
+
+      .service-card:hover {
+        transform: translateY(-16px);
+        box-shadow: var(--shadow-xl);
+        border-color: var(--primary-color);
+      }
+
+      .service-icon {
+        font-size: 56px;
+        margin-bottom: 32px;
+        display: block;
+        transition: all 0.4s ease;
+        filter: grayscale(0.5);
+      }
+
+      .service-card:hover .service-icon {
+        filter: grayscale(0);
+        transform: scale(1.1) rotate(5deg);
+      }
+
+      .service-title {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 28px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: var(--text-primary);
+      }
+
+      .service-desc {
+        color: var(--text-secondary);
+        line-height: 1.8;
+        font-size: 16px;
+      }
+
+      /* Premium Case Studies */
+      .case-studies {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 40px;
+      }
+
+      .case-study {
+        background: linear-gradient(
+          135deg,
+          var(--bg-primary) 0%,
+          rgba(255, 255, 255, 0.9) 100%
+        );
+        border: 1px solid var(--border-color);
+        border-radius: 32px;
+        padding: 48px;
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+        box-shadow: var(--shadow-md);
+      }
+
+      .case-study::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 6px;
+        background: var(--gradient-secondary);
+        transform: scaleX(0);
+        transition: transform 0.4s ease;
+      }
+
+      .case-study:hover::before {
+        transform: scaleX(1);
+      }
+
+      .case-study:hover {
+        transform: translateY(-16px);
+        box-shadow: var(--shadow-xl);
+        border-color: var(--accent-color);
+      }
+
+      .case-result {
+        background: var(--gradient-secondary);
+        color: white;
+        padding: 10px 20px;
+        border-radius: 50px;
+        font-size: 14px;
+        font-weight: 700;
+        display: inline-block;
+        margin-bottom: 32px;
+        letter-spacing: 0.3px;
+        text-transform: uppercase;
+        box-shadow: var(--shadow-md);
+      }
+
+      .case-title {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 28px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: var(--text-primary);
+        line-height: 1.3;
+      }
+
+      .case-summary {
+        color: var(--text-secondary);
+        line-height: 1.8;
+        font-size: 16px;
+      }
+
+      /* Premium Pills */
+      .pills-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        justify-content: center;
+        margin-top: 48px;
+      }
+
+      .pill {
+        background: linear-gradient(
+          135deg,
+          rgba(0, 102, 255, 0.1) 0%,
+          rgba(139, 92, 246, 0.1) 100%
+        );
+        color: var(--primary-color);
+        padding: 12px 24px;
+        border-radius: 50px;
+        font-size: 14px;
+        font-weight: 600;
+        border: 1px solid rgba(0, 102, 255, 0.2);
+        transition: all 0.3s ease;
+        letter-spacing: 0.3px;
+      }
+
+      .pill:hover {
+        background: var(--gradient-primary);
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+      }
+
+      /* Premium Contact Cards */
+      .contact-cards-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 32px;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 40px 0;
+      }
+
+      .contact-card {
+        background: linear-gradient(
+          135deg,
+          var(--bg-primary) 0%,
+          rgba(255, 255, 255, 0.95) 100%
+        );
+        backdrop-filter: blur(20px);
+        border: 1px solid var(--border-color);
+        border-radius: 24px;
+        padding: 40px 32px;
+        text-align: center;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+        box-shadow: var(--shadow-sm);
+      }
+
+      .contact-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: var(--gradient-primary);
+        transform: scaleX(0);
+        transition: transform 0.4s ease;
+      }
+
+      .contact-card::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(0, 102, 255, 0.03),
+          transparent
+        );
+        transition: left 0.6s ease;
+      }
+
+      .contact-card:hover::before {
+        transform: scaleX(1);
+      }
+
+      .contact-card:hover::after {
+        left: 100%;
+      }
+
+      .contact-card:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-xl);
+        border-color: var(--primary-color);
+      }
+
+      .contact-icon {
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 24px;
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .email-icon {
+        background: linear-gradient(135deg, #0066FF 0%, #8B5CF6 100%);
+        color: white;
+      }
+
+      .phone-icon {
+        background: linear-gradient(135deg, #06B6D4 0%, #10B981 100%);
+        color: white;
+      }
+
+      .contact-card:hover .contact-icon {
+        transform: scale(1.1) rotate(5deg);
+        box-shadow: var(--shadow-glow);
+      }
+
+      .contact-details {
+        position: relative;
+        z-index: 2;
+      }
+
+      .contact-label {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 8px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .contact-value {
+        font-size: 16px;
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        display: inline-block;
+        position: relative;
+      }
+
+      .contact-value::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--gradient-secondary);
+        transition: width 0.3s ease;
+      }
+
+      .contact-card:hover .contact-value {
+        transform: translateY(-2px);
+      }
+
+      .contact-card:hover .contact-value::after {
+        width: 100%;
+      }
+
+      .enquire-btn {
+        background: var(--gradient-primary);
+        color: white;
+        padding: 20px 40px;
+        border: none;
+        border-radius: 50px;
+        font-weight: 700;
+        font-size: 16px;
+        transition: all 0.4s ease;
+        cursor: pointer;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .enquire-btn::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.3),
+          transparent
+        );
+        transition: left 0.5s;
+      }
+
+      .enquire-btn:hover::before {
+        left: 100%;
+      }
+
+      .enquire-btn:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-glow);
+      }
+
+      /* Scroll Reveal Animations */
+      .scroll-reveal {
+        opacity: 0;
+        transform: translateY(60px);
+        transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .scroll-reveal.revealed {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Responsive Design */
+      @media (max-width: 1024px) {
         .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 32px;
-        }
-
-        /* Premium Background System */
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            overflow: hidden;
-            z-index: 0;
-        }
-
-        .bg-mesh {
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: 
-                radial-gradient(circle at 20% 80%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(6, 182, 212, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
-            animation: meshRotate 20s ease-in-out infinite;
-        }
-
-        @keyframes meshRotate {
-            0%, 100% { transform: rotate(0deg) scale(1); }
-            33% { transform: rotate(120deg) scale(1.1); }
-            66% { transform: rotate(240deg) scale(0.9); }
-        }
-
-        .grid-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: gridMove 30s linear infinite;
-        }
-
-        @keyframes gridMove {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(50px, 50px); }
-        }
-
-        /* Premium Analytics Elements */
-        .analytics-element {
-            position: absolute;
-            opacity: 0.1;
-            animation: floatAdvanced 12s ease-in-out infinite;
-            pointer-events: none;
-            filter: drop-shadow(0 4px 12px rgba(0, 102, 255, 0.1));
-        }
-
-        .analytics-element.bar-chart {
-            top: 15%;
-            left: 8%;
-            width: 140px;
-            height: 100px;
-            animation-delay: 0s;
-        }
-
-        .analytics-element.line-chart {
-            top: 25%;
-            right: 10%;
-            width: 160px;
-            height: 110px;
-            animation-delay: 3s;
-        }
-
-        .analytics-element.pie-chart {
-            bottom: 25%;
-            left: 12%;
-            width: 120px;
-            height: 120px;
-            animation-delay: 6s;
-        }
-
-        .analytics-element.data-table {
-            bottom: 35%;
-            right: 15%;
-            width: 130px;
-            height: 90px;
-            animation-delay: 9s;
-        }
-
-        .analytics-element.dashboard {
-            top: 45%;
-            left: 20%;
-            width: 100px;
-            height: 100px;
-            animation-delay: 1.5s;
-        }
-
-        .analytics-element.trend-arrow {
-            top: 60%;
-            right: 40%;
-            width: 110px;
-            height: 60px;
-            animation-delay: 4.5s;
-        }
-
-        @keyframes floatAdvanced {
-            0%, 100% { 
-                transform: translateY(0px) rotate(0deg) scale(1);
-                opacity: 0.1;
-            }
-            25% { 
-                transform: translateY(-20px) rotate(2deg) scale(1.05);
-                opacity: 0.15;
-            }
-            50% { 
-                transform: translateY(-30px) rotate(-2deg) scale(1.1);
-                opacity: 0.2;
-            }
-            75% { 
-                transform: translateY(-15px) rotate(1deg) scale(1.05);
-                opacity: 0.15;
-            }
-        }
-
-        /* Premium Navigation */
-        .nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            backdrop-filter: blur(20px) saturate(180%);
-            background: var(--bg-glass);
-            border-bottom: 1px solid var(--border-glass);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .nav.scrolled {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .nav-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 24px 0;
-            transition: padding 0.3s ease;
-        }
-
-        .nav.scrolled .nav-inner {
-            padding: 16px 0;
-        }
-
-        .nav-brand {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 28px;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+          padding: 0 24px;
         }
 
         .nav-links {
-            display: flex;
-            gap: 40px;
-            list-style: none;
+          display: none;
         }
 
-        .nav-links a {
-            color: rgba(255, 255, 255, 0.9);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 16px;
-            position: relative;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            padding: 8px 0;
+        .services-grid,
+        .case-studies {
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 32px;
         }
+      }
 
-        .nav.scrolled .nav-links a {
-            color: var(--text-primary);
-        }
-
-        .nav-links a::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gradient-secondary);
-            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .nav-links a:hover::before {
-            width: 100%;
-        }
-
-        .nav-links a:hover {
-            transform: translateY(-2px);
-        }
-
-        .contact-btn {
-            background: var(--bg-glass);
-            color: white;
-            padding: 12px 28px;
-            border: 1px solid var(--border-glass);
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 16px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            backdrop-filter: blur(10px);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .nav.scrolled .contact-btn {
-            background: var(--gradient-primary);
-            color: white;
-            border-color: transparent;
-        }
-
-        .contact-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s;
-        }
-
-        .contact-btn:hover::before {
-            left: 100%;
-        }
-
-        .contact-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-glow);
-        }
-
-        /* Hero Section - Premium Design */
+      @media (max-width: 768px) {
         .hero {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            color: white;
-            padding: 120px 0 80px;
-            z-index: 1;
+          padding: 100px 0 60px;
         }
 
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            background: var(--bg-glass);
-            backdrop-filter: blur(20px);
-            padding: 12px 24px;
-            border-radius: 50px;
-            border: 1px solid var(--border-glass);
-            font-size: 14px;
-            font-weight: 500;
-            margin-bottom: 32px;
-            animation: fadeInUp 0.8s ease-out;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-badge::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-            animation: shimmer 2s infinite;
-        }
-
-        @keyframes shimmer {
-            0% { left: -100%; }
-            100% { left: 100%; }
-        }
-
-        .hero-badge .badge-icon {
-            width: 8px;
-            height: 8px;
-            background: var(--gradient-secondary);
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(1.2); }
-        }
-
-        .hero h1 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(48px, 6vw, 84px);
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 24px;
-            letter-spacing: -0.02em;
-            animation: fadeInUp 0.8s ease-out 0.2s both;
-            background: linear-gradient(135deg, #FFFFFF 0%, rgba(255,255,255,0.8) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-tagline {
-            font-size: 28px;
-            font-weight: 500;
-            margin-bottom: 32px;
-            opacity: 0.9;
-            animation: fadeInUp 0.8s ease-out 0.4s both;
-            background: var(--gradient-secondary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-description {
-            font-size: 20px;
-            line-height: 1.8;
-            max-width: 720px;
-            margin: 0 auto 48px;
-            opacity: 0.85;
-            animation: fadeInUp 0.8s ease-out 0.6s both;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Premium Stats Row */
         .stats-row {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 32px;
-            margin: 64px 0;
-            animation: fadeInUp 0.8s ease-out 0.8s both;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 24px;
         }
 
-        .stat {
-            background: var(--bg-glass);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--border-glass);
-            border-radius: 24px;
-            padding: 32px 24px;
-            text-align: center;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .stat::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: var(--gradient-secondary);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .stat:hover::before {
-            transform: scaleX(1);
-        }
-
-        .stat:hover {
-            transform: translateY(-12px);
-            box-shadow: var(--shadow-xl);
-            border-color: rgba(255, 255, 255, 0.2);
-        }
-
-        .stat-value {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 36px;
-            font-weight: 800;
-            margin-bottom: 8px;
-            background: var(--gradient-secondary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .stat-label {
-            font-size: 14px;
-            font-weight: 500;
-            opacity: 0.8;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        /* Premium Button System */
         .hero-buttons {
-            display: flex;
-            gap: 24px;
-            justify-content: center;
-            margin-top: 48px;
-            flex-wrap: wrap;
-            animation: fadeInUp 0.8s ease-out 1s both;
+          flex-direction: column;
+          align-items: center;
         }
 
-        .btn {
-            padding: 16px 32px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 16px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-primary {
-            background: white;
-            color: var(--primary-color);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .btn-primary::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient-primary);
-            transition: left 0.3s ease;
-            z-index: -1;
-        }
-
-        .btn-primary:hover::before {
-            left: 0;
-        }
-
-        .btn-primary:hover {
-            color: white;
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-glow);
-        }
-
-        .btn-secondary {
-            background: var(--bg-glass);
-            color: white;
-            border: 1px solid var(--border-glass);
-            backdrop-filter: blur(20px);
-        }
-
-        .btn-secondary:hover {
-            background: white;
-            color: var(--primary-color);
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: white;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(10px);
-        }
-
-        .btn-outline:hover {
-            background: white;
-            color: var(--primary-color);
-            border-color: white;
-            transform: translateY(-4px);
-        }
-
-        /* Main Content - Premium Design */
-        .main-content {
-            background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
-            border-radius: 48px 48px 0 0;
-            margin-top: 80px;
-            padding: 120px 0;
-            position: relative;
-            z-index: 2;
-            box-shadow: 0 -20px 80px rgba(0, 0, 0, 0.1);
+        .contact-form {
+          padding: 40px 32px;
+          margin: 0 16px;
         }
 
         .section {
-            margin-bottom: 160px;
-            position: relative;
+          margin-bottom: 120px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .stats-row {
+          grid-template-columns: 1fr;
         }
 
-        .section-header {
-            text-align: center;
-            margin-bottom: 80px;
-            position: relative;
-        }
-
-        .section-badge {
-            display: inline-block;
-            background: var(--gradient-primary);
-            color: white;
-            padding: 8px 20px;
-            border-radius: 50px;
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 24px;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-        }
-
-        .section-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(40px, 5vw, 64px);
-            font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 24px;
-            letter-spacing: -0.02em;
-            color: var(--text-primary);
-            background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .section-subtitle {
-            font-size: 20px;
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.7;
-        }
-
-        /* Premium Service Cards */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-        }
-
-        .service-card {
-            background: linear-gradient(135deg, var(--bg-primary) 0%, rgba(255,255,255,0.8) 100%);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--border-color);
-            border-radius: 32px;
-            padding: 48px 40px;
-            text-align: center;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--gradient-primary);
-            transform: scaleX(0);
-            transition: transform 0.4s ease;
-        }
-
-        .service-card::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 102, 255, 0.05), transparent);
-            transition: left 0.6s ease;
-        }
-
-        .service-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .service-card:hover::after {
-            left: 100%;
-        }
-
-        .service-card:hover {
-            transform: translateY(-16px);
-            box-shadow: var(--shadow-xl);
-            border-color: var(--primary-color);
-        }
-
-        .service-icon {
-            font-size: 56px;
-            margin-bottom: 32px;
-            display: block;
-            transition: all 0.4s ease;
-            filter: grayscale(0.5);
-        }
-
-        .service-card:hover .service-icon {
-            filter: grayscale(0);
-            transform: scale(1.1) rotate(5deg);
-        }
-
-        .service-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: var(--text-primary);
-        }
-
-        .service-desc {
-            color: var(--text-secondary);
-            line-height: 1.8;
-            font-size: 16px;
-        }
-
-        /* Premium Case Studies */
-        .case-studies {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 40px;
-        }
-
+        .service-card,
         .case-study {
-            background: linear-gradient(135deg, var(--bg-primary) 0%, rgba(255,255,255,0.9) 100%);
-            border: 1px solid var(--border-color);
-            border-radius: 32px;
-            padding: 48px;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-            box-shadow: var(--shadow-md);
+          padding: 32px 24px;
         }
 
-        .case-study::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 6px;
-            background: var(--gradient-secondary);
-            transform: scaleX(0);
-            transition: transform 0.4s ease;
-        }
-
-        .case-study:hover::before {
-            transform: scaleX(1);
-        }
-
-        .case-study:hover {
-            transform: translateY(-16px);
-            box-shadow: var(--shadow-xl);
-            border-color: var(--accent-color);
-        }
-
-        .case-result {
-            background: var(--gradient-secondary);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 50px;
-            font-size: 14px;
-            font-weight: 700;
-            display: inline-block;
-            margin-bottom: 32px;
-            letter-spacing: 0.3px;
-            text-transform: uppercase;
-            box-shadow: var(--shadow-md);
-        }
-
-        .case-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: var(--text-primary);
-            line-height: 1.3;
-        }
-
-        .case-summary {
-            color: var(--text-secondary);
-            line-height: 1.8;
-            font-size: 16px;
-        }
-
-        /* Premium Pills */
-        .pills-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
-            justify-content: center;
-            margin-top: 48px;
-        }
-
-        .pill {
-            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
-            color: var(--primary-color);
-            padding: 12px 24px;
-            border-radius: 50px;
-            font-size: 14px;
-            font-weight: 600;
-            border: 1px solid rgba(0, 102, 255, 0.2);
-            transition: all 0.3s ease;
-            letter-spacing: 0.3px;
-        }
-
-        .pill:hover {
-            background: var(--gradient-primary);
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-        }
-
-        /* Premium Contact Form */
         .contact-form {
-            max-width: 700px;
-            margin: 0 auto;
-            background: linear-gradient(135deg, var(--bg-primary) 0%, rgba(255,255,255,0.95) 100%);
-            backdrop-filter: blur(20px);
-            padding: 60px;
-            border-radius: 32px;
-            border: 1px solid var(--border-color);
-            box-shadow: var(--shadow-lg);
-            position: relative;
-            overflow: hidden;
+          padding: 32px 24px;
         }
+      }
 
-        .contact-form::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--gradient-primary);
-        }
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
 
-        .form-group {
-            margin-bottom: 32px;
-        }
+      ::-webkit-scrollbar-track {
+        background: var(--bg-secondary);
+      }
 
-        .form-group label {
-            display: block;
-            margin-bottom: 12px;
-            font-weight: 600;
-            color: var(--text-primary);
-            font-size: 16px;
-        }
+      ::-webkit-scrollbar-thumb {
+        background: var(--gradient-primary);
+        border-radius: 4px;
+      }
 
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 20px 24px;
-            border: 2px solid var(--border-color);
-            border-radius: 16px;
-            font-size: 16px;
-            font-family: inherit;
-            transition: all 0.3s ease;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 4px rgba(0, 102, 255, 0.1);
-            background: white;
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 160px;
-        }
-
-        .enquire-btn {
-            background: var(--gradient-primary);
-            color: white;
-            padding: 20px 40px;
-            border: none;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 16px;
-            transition: all 0.4s ease;
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .enquire-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.5s;
-        }
-
-        .enquire-btn:hover::before {
-            left: 100%;
-        }
-
-        .enquire-btn:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-glow);
-        }
-
-        /* Scroll Reveal Animations */
-        .scroll-reveal {
-            opacity: 0;
-            transform: translateY(60px);
-            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .scroll-reveal.revealed {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            .container {
-                padding: 0 24px;
-            }
-            
-            .nav-links {
-                display: none;
-            }
-            
-            .services-grid,
-            .case-studies {
-                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-                gap: 32px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero {
-                padding: 100px 0 60px;
-            }
-            
-            .stats-row {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 24px;
-            }
-            
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .contact-form {
-                padding: 40px 32px;
-                margin: 0 16px;
-            }
-            
-            .section {
-                margin-bottom: 120px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .stats-row {
-                grid-template-columns: 1fr;
-            }
-            
-            .service-card,
-            .case-study {
-                padding: 32px 24px;
-            }
-            
-            .contact-form {
-                padding: 32px 24px;
-            }
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: var(--bg-secondary);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--gradient-primary);
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--primary-dark);
-        }
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--primary-dark);
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Premium Navigation -->
     <nav class="nav" id="navbar">
-        <div class="container">
-            <div class="nav-inner">
-                <div class="nav-brand">GK | Market Insights</div>
-                <ul class="nav-links">
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#case-studies">Case Studies</a></li>
-                    <li><a href="#process">Process</a></li>
-                    <li><a href="#testimonials">Testimonials</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-                <a href="#contact" class="contact-btn">Get Started</a>
-            </div>
+      <div class="container">
+        <div class="nav-inner">
+          <div class="nav-brand">GK | Market Insights</div>
+          <ul class="nav-links">
+            <li><a href="#services">Services</a></li>
+            <li><a href="#case-studies">Case Studies</a></li>
+            <li><a href="#process">Process</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+          <a href="#contact" class="contact-btn">Get Started</a>
         </div>
+      </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-bg">
-            <!-- Premium Background Elements -->
-            <div class="bg-mesh"></div>
-            <div class="grid-overlay"></div>
-            
-            <!-- Enhanced Analytics Elements -->
-            <div class="analytics-element bar-chart">
-                <svg viewBox="0 0 140 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <linearGradient id="barGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                            <stop offset="0%" style="stop-color:rgba(0,102,255,0.8);stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:rgba(6,182,212,0.6);stop-opacity:1" />
-                        </linearGradient>
-                    </defs>
-                    <rect x="15" y="70" width="18" height="25" fill="url(#barGradient)" rx="3"/>
-                    <rect x="40" y="50" width="18" height="45" fill="url(#barGradient)" rx="3"/>
-                    <rect x="65" y="30" width="18" height="65" fill="url(#barGradient)" rx="3"/>
-                    <rect x="90" y="40" width="18" height="55" fill="url(#barGradient)" rx="3"/>
-                    <rect x="115" y="25" width="18" height="70" fill="url(#barGradient)" rx="3"/>
-                </svg>
-            </div>
+      <div class="hero-bg">
+        <!-- Premium Background Elements -->
+        <div class="bg-mesh"></div>
+        <div class="grid-overlay"></div>
 
-            <div class="analytics-element line-chart">
-                <svg viewBox="0 0 160 110" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                            <stop offset="0%" style="stop-color:rgba(139,92,246,0.8);stop-opacity:1" />
-                            <stop offset="50%" style="stop-color:rgba(0,102,255,0.8);stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:rgba(6,182,212,0.8);stop-opacity:1" />
-                        </linearGradient>
-                        <linearGradient id="areaGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                            <stop offset="0%" style="stop-color:rgba(0,102,255,0.2);stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:rgba(0,102,255,0.05);stop-opacity:1" />
-                        </linearGradient>
-                    </defs>
-                    <path d="M15,85 Q35,70 60,50 T110,30 T145,25" stroke="url(#lineGradient)" stroke-width="3" fill="none"/>
-                    <path d="M15,85 Q35,70 60,50 T110,30 T145,25 L145,95 L15,95 Z" fill="url(#areaGradient)"/>
-                    <circle cx="15" cy="85" r="3" fill="rgba(255,255,255,0.9)"/>
-                    <circle cx="35" cy="70" r="3" fill="rgba(139,92,246,0.9)"/>
-                    <circle cx="60" cy="50" r="3" fill="rgba(0,102,255,0.9)"/>
-                    <circle cx="85" cy="40" r="3" fill="rgba(6,182,212,0.9)"/>
-                    <circle cx="110" cy="30" r="3" fill="rgba(16,185,129,0.9)"/>
-                </svg>
-            </div>
+      </div>
 
-            <div class="analytics-element pie-chart">
-                <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <linearGradient id="pieGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:rgba(0,102,255,0.8);stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:rgba(139,92,246,0.6);stop-opacity:1" />
-                        </linearGradient>
-                        <linearGradient id="pieGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:rgba(6,182,212,0.8);stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:rgba(16,185,129,0.6);stop-opacity:1" />
-                        </linearGradient>
-                    </defs>
-                    <circle cx="60" cy="60" r="40" fill="url(#pieGradient1)" opacity="0.7"/>
-                    <path d="M60,60 L60,20 A40,40 0 0,1 95,40 Z" fill="url(#pieGradient2)"/>
-                    <path d="M60,60 L95,40 A40,40 0 0,1 100,75 Z" fill="rgba(245,158,11,0.7)"/>
-                    <circle cx="60" cy="60" r="20" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
-                </svg>
-            </div>
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <div class="badge-icon"></div>
+            <span
+              >B2B • Manufacturing • Electronics • Industrial Automation</span
+            >
+          </div>
+          <h1>Where Industry Meets Insight</h1>
+          <div class="hero-tagline">Market Research & Intelligence</div>
+          <p class="hero-description">
+            I help industrial companies make confident, data-driven decisions.
+            From value chain analysis to competitive benchmarking - delivered
+            with clarity and speed.
+          </p>
 
-            <div class="analytics-element dashboard">
-                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <radialGradient id="dashGradient" cx="50%" cy="50%" r="50%">
-                            <stop offset="0%" style="stop-color:rgba(255,255,255,0.1);stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:rgba(0,102,255,0.2);stop-opacity:1" />
-                        </radialGradient>
-                    </defs>
-                    <circle cx="50" cy="50" r="35" fill="url(#dashGradient)" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
-                    <path d="M25,50 A25,25 0 1,1 75,50" stroke="rgba(0,102,255,0.8)" stroke-width="3" fill="none"/>
-                    <line x1="50" y1="50" x2="65" y2="35" stroke="rgba(6,182,212,0.9)" stroke-width="3"/>
-                    <circle cx="50" cy="50" r="3" fill="rgba(255,255,255,0.9)"/>
-                </svg>
+          <div class="stats-row">
+            <div class="stat">
+              <div class="stat-value">10+ yrs</div>
+              <div class="stat-label">Experience</div>
             </div>
+            <div class="stat">
+              <div class="stat-value">3000+</div>
+              <div class="stat-label">Qualified Leads Generated</div>
+            </div>
+            <div class="stat">
+              <div class="stat-value">50+</div>
+              <div class="stat-label">New Opportunities Identified</div>
+            </div>
+            <div class="stat">
+              <div class="stat-value">25%</div>
+              <div class="stat-label">Strategy Impact</div>
+            </div>
+          </div>
+
+          <div class="hero-buttons">
+            <a href="#contact" class="btn btn-primary">Start a Project</a>
+            <a href="#case-studies" class="btn btn-secondary"
+              >View Case Studies</a
+            >
+            <a href="#contact" class="btn btn-outline">Connect</a>
+          </div>
         </div>
-
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-badge">
-                    <div class="badge-icon"></div>
-                    <span>B2B • Manufacturing • Electronics • Industrial Automation</span>
-                </div>
-                <h1>Where Industry Meets Insight</h1>
-                <div class="hero-tagline">Market Research & Intelligence</div>
-                <p class="hero-description">
-                    I help industrial companies make confident, data-driven decisions. From value chain analysis to competitive benchmarking - delivered with clarity and speed.
-                </p>
-                
-                <div class="stats-row">
-                    <div class="stat">
-                        <div class="stat-value">10+ yrs</div>
-                        <div class="stat-label">Experience</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-value">3000+</div>
-                        <div class="stat-label">Qualified Leads Generated</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-value">50+</div>
-                        <div class="stat-label">New Opportunities Identified</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-value">25%</div>
-                        <div class="stat-label">Strategy Impact</div>
-                    </div>
-                </div>
-
-                <div class="hero-buttons">
-                    <a href="#contact" class="btn btn-primary">Start a Project</a>
-                    <a href="#case-studies" class="btn btn-secondary">View Case Studies</a>
-                    <a href="#contact" class="btn btn-outline">Connect</a>
-                </div>
-            </div>
-        </div>
+      </div>
     </section>
 
     <!-- Main Content -->
     <div class="main-content">
-        <div class="container">
-            <!-- What I Can Do For You Section -->
-            <section class="section">
-                <div class="section-header scroll-reveal">
-                    <div class="section-badge">Expertise</div>
-                    <h2 class="section-title">What I can do for you</h2>
-                    <p class="section-subtitle">Comprehensive market intelligence solutions tailored for industrial companies</p>
-                </div>
-                <div class="services-grid">
-                    <div class="service-card scroll-reveal">
-                        <div class="service-icon">📊</div>
-                        <h3 class="service-title">Market Intelligence</h3>
-                        <p class="service-desc">Segment classification, Value chain analysis, Deep dive analysis, OEM matrix, Market insights</p>
-                    </div>
-                    <div class="service-card scroll-reveal">
-                        <div class="service-icon">🔍</div>
-                        <h3 class="service-title">Competitive Intelligence</h3>
-                        <p class="service-desc">Benchmarking, Product, Pricing and Financial analysis</p>
-                    </div>
-                    <div class="service-card scroll-reveal">
-                        <div class="service-icon">👥</div>
-                        <h3 class="service-title">Primary Research</h3>
-                        <p class="service-desc">Expert interview, Go-to-Field</p>
-                    </div>
-                    <div class="service-card scroll-reveal">
-                        <div class="service-icon">🎯</div>
-                        <h3 class="service-title">Prospecting</h3>
-                        <p class="service-desc">Company profiling, Prospects identification, Leads generation</p>
-                    </div>
-                </div>
-                <div class="pills-container scroll-reveal">
-                    <div class="pill">NDA-friendly</div>
-                    <div class="pill">Rapid turnarounds</div>
-                    <div class="pill">Source-backed insights</div>
-                </div>
-            </section>
+      <div class="container">
+        <!-- What I Can Do For You Section -->
+        <section class="section">
+          <div class="section-header scroll-reveal">
+            <h2 class="section-title">What I can do for you</h2>
+            <p class="section-subtitle">
+              Comprehensive market intelligence solutions tailored for
+              industrial companies
+            </p>
+          </div>
+          <div class="services-grid">
+            <div class="service-card scroll-reveal">
+              <div class="service-icon">📊</div>
+              <h3 class="service-title">Market Intelligence</h3>
+              <p class="service-desc">
+                Segment classification, Value chain analysis, Deep dive
+                analysis, OEM matrix, Market insights
+              </p>
+            </div>
+            <div class="service-card scroll-reveal">
+              <div class="service-icon">🔍</div>
+              <h3 class="service-title">Competitive Intelligence</h3>
+              <p class="service-desc">
+                Benchmarking, Product, Pricing and Financial analysis
+              </p>
+            </div>
+            <div class="service-card scroll-reveal">
+              <div class="service-icon">👥</div>
+              <h3 class="service-title">Primary Research</h3>
+              <p class="service-desc">Expert interview, Go-to-Field</p>
+            </div>
+            <div class="service-card scroll-reveal">
+              <div class="service-icon">🎯</div>
+              <h3 class="service-title">Prospecting</h3>
+              <p class="service-desc">
+                Company profiling, Prospects identification, Leads generation
+              </p>
+            </div>
+          </div>
+          <div class="pills-container scroll-reveal">
+            <div class="pill">NDA-friendly</div>
+            <div class="pill">Rapid turnarounds</div>
+            <div class="pill">Source-backed insights</div>
+          </div>
+        </section>
 
-            <!-- Services Section -->
-            <section id="services" class="section">
-                <div class="section-header scroll-reveal">
-                    <div class="section-badge">Services</div>
-                    <h2 class="section-title">Services</h2>
-                    <p class="section-subtitle">Strategic market intelligence services designed to drive your business forward</p>
-                </div>
-                <div class="services-grid">
-                    <div class="service-card scroll-reveal">
-                        <div class="service-icon">📈</div>
-                        <h3 class="service-title">Market Landscape</h3>
-                        <ul style="text-align: left; color: var(--text-secondary); font-size: 16px; line-height: 1.8; list-style: none; padding-left: 0;">
-                            <li style="padding: 8px 0; position: relative; padding-left: 24px;">
-                                <span style="position: absolute; left: 0; color: var(--primary-color); font-weight: bold;">•</span>
-                                Size, growth, segmentation
-                            </li>
-                            <li style="padding: 8px 0; position: relative; padding-left: 24px;">
-                                <span style="position: absolute; left: 0; color: var(--primary-color); font-weight: bold;">•</span>
-                                Trends & drivers
-                            </li>
-                            <li style="padding: 8px 0; position: relative; padding-left: 24px;">
-                                <span style="position: absolute; left: 0; color: var(--primary-color); font-weight: bold;">•</span>
-                                Requirements
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="service-card scroll-reveal">
-                        <div class="service-icon">🧭</div>
-                        <h3 class="service-title">Opportunity Scan</h3>
-                        <ul style="text-align: left; color: var(--text-secondary); font-size: 16px; line-height: 1.8; list-style: none; padding-left: 0;">
-                            <li style="padding: 8px 0; position: relative; padding-left: 24px;">
-                                <span style="position: absolute; left: 0; color: var(--primary-color); font-weight: bold;">•</span>
-                                Market mapping
-                            </li>
-                            <li style="padding: 8px 0; position: relative; padding-left: 24px;">
-                                <span style="position: absolute; left: 0; color: var(--primary-color); font-weight: bold;">•</span>
-                                Classification of neighboring and bordering market segments
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="service-card scroll-reveal">
-                        <div class="service-icon">🔄</div>
-                        <h3 class="service-title">Enablement</h3>
-                        <ul style="text-align: left; color: var(--text-secondary); font-size: 16px; line-height: 1.8; list-style: none; padding-left: 0;">
-                            <li style="padding: 8px 0; position: relative; padding-left: 24px;">
-                                <span style="position: absolute; left: 0; color: var(--primary-color); font-weight: bold;">•</span>
-                                Sales prospects
-                            </li>
-                            <li style="padding: 8px 0; position: relative; padding-left: 24px;">
-                                <span style="position: absolute; left: 0; color: var(--primary-color); font-weight: bold;">•</span>
-                                Leads identification
-                            </li>
-                            <li style="padding: 8px 0; position: relative; padding-left: 24px;">
-                                <span style="position: absolute; left: 0; color: var(--primary-color); font-weight: bold;">•</span>
-                                Persona briefs
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="text-center scroll-reveal" style="margin-top: 48px;">
-                    <a href="#contact" class="enquire-btn">Get a tailored scope</a>
-                </div>
-            </section>
+        <!-- Services Section -->
+        <section id="services" class="section">
+          <div class="section-header scroll-reveal">
+            <h2 class="section-title">Services</h2>
+            <p class="section-subtitle">
+              Strategic market intelligence services designed to drive your
+              business forward
+            </p>
+          </div>
+          <div class="services-grid">
+            <div class="service-card scroll-reveal">
+              <div class="service-icon">📈</div>
+              <h3 class="service-title">Market Landscape</h3>
+              <ul
+                style="
+                  text-align: left;
+                  color: var(--text-secondary);
+                  font-size: 16px;
+                  line-height: 1.8;
+                  list-style: none;
+                  padding-left: 0;
+                "
+              >
+                <li
+                  style="padding: 8px 0; position: relative; padding-left: 24px"
+                >
+                  <span
+                    style="
+                      position: absolute;
+                      left: 0;
+                      color: var(--primary-color);
+                      font-weight: bold;
+                    "
+                    >•</span
+                  >
+                  Size, growth, segmentation
+                </li>
+                <li
+                  style="padding: 8px 0; position: relative; padding-left: 24px"
+                >
+                  <span
+                    style="
+                      position: absolute;
+                      left: 0;
+                      color: var(--primary-color);
+                      font-weight: bold;
+                    "
+                    >•</span
+                  >
+                  Trends & drivers
+                </li>
+                <li
+                  style="padding: 8px 0; position: relative; padding-left: 24px"
+                >
+                  <span
+                    style="
+                      position: absolute;
+                      left: 0;
+                      color: var(--primary-color);
+                      font-weight: bold;
+                    "
+                    >•</span
+                  >
+                  Requirements
+                </li>
+              </ul>
+            </div>
+            <div class="service-card scroll-reveal">
+              <div class="service-icon">🧭</div>
+              <h3 class="service-title">Opportunity Scan</h3>
+              <ul
+                style="
+                  text-align: left;
+                  color: var(--text-secondary);
+                  font-size: 16px;
+                  line-height: 1.8;
+                  list-style: none;
+                  padding-left: 0;
+                "
+              >
+                <li
+                  style="padding: 8px 0; position: relative; padding-left: 24px"
+                >
+                  <span
+                    style="
+                      position: absolute;
+                      left: 0;
+                      color: var(--primary-color);
+                      font-weight: bold;
+                    "
+                    >•</span
+                  >
+                  Market mapping
+                </li>
+                <li
+                  style="padding: 8px 0; position: relative; padding-left: 24px"
+                >
+                  <span
+                    style="
+                      position: absolute;
+                      left: 0;
+                      color: var(--primary-color);
+                      font-weight: bold;
+                    "
+                    >•</span
+                  >
+                  Classification of neighboring and bordering market segments
+                </li>
+              </ul>
+            </div>
+            <div class="service-card scroll-reveal">
+              <div class="service-icon">🔄</div>
+              <h3 class="service-title">Enablement</h3>
+              <ul
+                style="
+                  text-align: left;
+                  color: var(--text-secondary);
+                  font-size: 16px;
+                  line-height: 1.8;
+                  list-style: none;
+                  padding-left: 0;
+                "
+              >
+                <li
+                  style="padding: 8px 0; position: relative; padding-left: 24px"
+                >
+                  <span
+                    style="
+                      position: absolute;
+                      left: 0;
+                      color: var(--primary-color);
+                      font-weight: bold;
+                    "
+                    >•</span
+                  >
+                  Sales prospects
+                </li>
+                <li
+                  style="padding: 8px 0; position: relative; padding-left: 24px"
+                >
+                  <span
+                    style="
+                      position: absolute;
+                      left: 0;
+                      color: var(--primary-color);
+                      font-weight: bold;
+                    "
+                    >•</span
+                  >
+                  Leads identification
+                </li>
+                <li
+                  style="padding: 8px 0; position: relative; padding-left: 24px"
+                >
+                  <span
+                    style="
+                      position: absolute;
+                      left: 0;
+                      color: var(--primary-color);
+                      font-weight: bold;
+                    "
+                    >•</span
+                  >
+                  Persona briefs
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="text-center scroll-reveal" style="margin-top: 48px">
+            <a href="#contact" class="enquire-btn">Get a tailored scope</a>
+          </div>
+        </section>
 
-            <!-- Process Section -->
-            <section id="process" class="section">
-                <div class="section-header scroll-reveal">
-                    <div class="section-badge">Process</div>
-                    <h2 class="section-title">Process</h2>
-                    <p class="section-subtitle">A proven methodology that delivers consistent, high-quality results</p>
-                </div>
-                <div class="services-grid">
-                    <div class="service-card scroll-reveal">
-                        <div class="service-icon" style="background: var(--gradient-primary); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 800; margin: 0 auto 24px;">1</div>
-                        <h3 class="service-title">Scope</h3>
-                        <p class="service-desc">Kickoff, hypotheses, deliverables, and timeline.</p>
-                    </div>
-                    <div class="service-card scroll-reveal">
-                        <div class="service-icon" style="background: var(--gradient-secondary); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 800; margin: 0 auto 24px;">2</div>
-                        <h3 class="service-title">Research</h3>
-                        <p class="service-desc">Sources: Primary research, desk research, databases.</p>
-                    </div>
-                    <div class="service-card scroll-reveal">
-                        <div class="service-icon" style="background: var(--gradient-accent); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 800; margin: 0 auto 24px;">3</div>
-                        <h3 class="service-title">Synthesize</h3>
-                        <p class="service-desc">Turn data into decisions: frameworks, briefs.</p>
-                    </div>
-                    <div class="service-card scroll-reveal">
-                        <div class="service-icon" style="background: var(--gradient-primary); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 800; margin: 0 auto 24px;">4</div>
-                        <h3 class="service-title">Enable</h3>
-                        <p class="service-desc">Handovers: decks, and working sheets.</p>
-                    </div>
-                </div>
-            </section>
+        <!-- Process Section -->
+        <section id="process" class="section">
+          <div class="section-header scroll-reveal">
+            <h2 class="section-title">Process</h2>
+            <p class="section-subtitle">
+              A proven methodology that delivers consistent, high-quality
+              results
+            </p>
+          </div>
+          <div class="services-grid">
+            <div class="service-card scroll-reveal">
+              <div
+                class="service-icon"
+                style="
+                  background: var(--gradient-primary);
+                  color: white;
+                  width: 60px;
+                  height: 60px;
+                  border-radius: 50%;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  font-size: 24px;
+                  font-weight: 800;
+                  margin: 0 auto 24px;
+                "
+              >
+                1
+              </div>
+              <h3 class="service-title">Scope</h3>
+              <p class="service-desc">
+                Kickoff, hypotheses, deliverables, and timeline.
+              </p>
+            </div>
+            <div class="service-card scroll-reveal">
+              <div
+                class="service-icon"
+                style="
+                  background: var(--gradient-secondary);
+                  color: white;
+                  width: 60px;
+                  height: 60px;
+                  border-radius: 50%;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  font-size: 24px;
+                  font-weight: 800;
+                  margin: 0 auto 24px;
+                "
+              >
+                2
+              </div>
+              <h3 class="service-title">Research</h3>
+              <p class="service-desc">
+                Sources: Primary research, desk research, databases.
+              </p>
+            </div>
+            <div class="service-card scroll-reveal">
+              <div
+                class="service-icon"
+                style="
+                  background: var(--gradient-accent);
+                  color: white;
+                  width: 60px;
+                  height: 60px;
+                  border-radius: 50%;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  font-size: 24px;
+                  font-weight: 800;
+                  margin: 0 auto 24px;
+                "
+              >
+                3
+              </div>
+              <h3 class="service-title">Synthesize</h3>
+              <p class="service-desc">
+                Turn data into decisions: frameworks, briefs.
+              </p>
+            </div>
+            <div class="service-card scroll-reveal">
+              <div
+                class="service-icon"
+                style="
+                  background: var(--gradient-primary);
+                  color: white;
+                  width: 60px;
+                  height: 60px;
+                  border-radius: 50%;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  font-size: 24px;
+                  font-weight: 800;
+                  margin: 0 auto 24px;
+                "
+              >
+                4
+              </div>
+              <h3 class="service-title">Enable</h3>
+              <p class="service-desc">Handovers: decks, and working sheets.</p>
+            </div>
+          </div>
+        </section>
 
-            <!-- Testimonials Section -->
-            <section id="testimonials" class="section">
-                <div class="section-header scroll-reveal">
-                    <div class="section-badge">Testimonials</div>
-                    <h2 class="section-title">Testimonials</h2>
-                    <p class="section-subtitle">Trusted by industry leaders across the globe</p>
-                </div>
-                <div class="services-grid">
-                    <div class="service-card scroll-reveal" style="text-align: left;">
-                        <div style="font-size: 48px; color: var(--primary-color); opacity: 0.2; margin-bottom: 16px;">"</div>
-                        <p style="font-style: italic; color: var(--text-primary); margin-bottom: 24px; font-size: 18px; line-height: 1.7;">"Girish is a committed and detail-oriented professional who quickly understands complex topics and delivers valuable insights."</p>
-                        <div style="font-weight: 700; color: var(--primary-color);">Director, Interconnects (EU)</div>
-                    </div>
-                    <div class="service-card scroll-reveal" style="text-align: left;">
-                        <div style="font-size: 48px; color: var(--primary-color); opacity: 0.2; margin-bottom: 16px;">"</div>
-                        <p style="font-style: italic; color: var(--text-primary); margin-bottom: 24px; font-size: 18px; line-height: 1.7;">"I highly recommend Girish for market research. He consistently delivers exceptional results, exceeding expectations."</p>
-                        <div style="font-weight: 700; color: var(--primary-color);">Research Manager, (APAC)</div>
-                    </div>
-                    <div class="service-card scroll-reveal" style="text-align: left;">
-                        <div style="font-size: 48px; color: var(--primary-color); opacity: 0.2; margin-bottom: 16px;">"</div>
-                        <p style="font-style: italic; color: var(--text-primary); margin-bottom: 24px; font-size: 18px; line-height: 1.7;">"The lead-gen insights directly fueled pipeline. Highly recommend."</p>
-                        <div style="font-weight: 700; color: var(--primary-color);">Head of Sales, Components (EU)</div>
-                    </div>
-                </div>
-            </section>
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="section">
+          <div class="section-header scroll-reveal">
+            <h2 class="section-title">Testimonials</h2>
+            <p class="section-subtitle">
+              Trusted by industry leaders across the globe
+            </p>
+          </div>
+          <div class="services-grid">
+            <div class="service-card scroll-reveal" style="text-align: left">
+              <div
+                style="
+                  font-size: 48px;
+                  color: var(--primary-color);
+                  opacity: 0.2;
+                  margin-bottom: 16px;
+                "
+              >
+                "
+              </div>
+              <p
+                style="
+                  font-style: italic;
+                  color: var(--text-primary);
+                  margin-bottom: 24px;
+                  font-size: 18px;
+                  line-height: 1.7;
+                "
+              >
+                "Girish is a committed and detail-oriented professional who
+                quickly understands complex topics and delivers valuable
+                insights."
+              </p>
+              <div style="font-weight: 700; color: var(--primary-color)">
+                Director, Interconnects (EU)
+              </div>
+            </div>
+            <div class="service-card scroll-reveal" style="text-align: left">
+              <div
+                style="
+                  font-size: 48px;
+                  color: var(--primary-color);
+                  opacity: 0.2;
+                  margin-bottom: 16px;
+                "
+              >
+                "
+              </div>
+              <p
+                style="
+                  font-style: italic;
+                  color: var(--text-primary);
+                  margin-bottom: 24px;
+                  font-size: 18px;
+                  line-height: 1.7;
+                "
+              >
+                "I highly recommend Girish for market research. He consistently
+                delivers exceptional results, exceeding expectations."
+              </p>
+              <div style="font-weight: 700; color: var(--primary-color)">
+                Research Manager, (APAC)
+              </div>
+            </div>
+            <div class="service-card scroll-reveal" style="text-align: left">
+              <div
+                style="
+                  font-size: 48px;
+                  color: var(--primary-color);
+                  opacity: 0.2;
+                  margin-bottom: 16px;
+                "
+              >
+                "
+              </div>
+              <p
+                style="
+                  font-style: italic;
+                  color: var(--text-primary);
+                  margin-bottom: 24px;
+                  font-size: 18px;
+                  line-height: 1.7;
+                "
+              >
+                "The lead-gen insights directly fueled pipeline. Highly
+                recommend."
+              </p>
+              <div style="font-weight: 700; color: var(--primary-color)">
+                Head of Sales, Components (EU)
+              </div>
+            </div>
+          </div>
+        </section>
 
-            <!-- Pricing Section -->
-            <section class="section">
-                <div class="section-header scroll-reveal">
-                    <div class="section-badge">Pricing</div>
-                    <h2 class="section-title">Pricing</h2>
-                    <p class="section-subtitle">Flexible engagement models to fit your needs and budget</p>
-                </div>
-                <div class="services-grid">
-                    <div class="service-card scroll-reveal">
-                        <h3 class="service-title" style="color: var(--success-color);">Demo</h3>
-                        <div style="font-size: 40px; font-weight: 800; background: var(--gradient-secondary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin: 16px 0 32px;">Free</div>
-                        <ul style="list-style: none; margin-bottom: 32px; padding: 0;">
-                            <li style="padding: 12px 0; color: var(--text-secondary); font-size: 16px; display: flex; align-items: center;">
-                                <span style="color: var(--success-color); font-weight: bold; margin-right: 12px; font-size: 18px;">✓</span>
-                                Summary slides
-                            </li>
-                        </ul>
-                        <a href="#contact" class="enquire-btn">Enquire</a>
-                    </div>
-                    <div class="service-card scroll-reveal">
-                        <h3 class="service-title">Starter Brief</h3>
-                        <div style="font-size: 40px; font-weight: 800; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin: 16px 0 32px;">On request</div>
-                        <ul style="list-style: none; margin-bottom: 32px; padding: 0;">
-                            <li style="padding: 12px 0; color: var(--text-secondary); font-size: 16px; display: flex; align-items: center;">
-                                <span style="color: var(--success-color); font-weight: bold; margin-right: 12px; font-size: 18px;">✓</span>
-                                2 week project
-                            </li>
-                            <li style="padding: 12px 0; color: var(--text-secondary); font-size: 16px; display: flex; align-items: center;">
-                                <span style="color: var(--success-color); font-weight: bold; margin-right: 12px; font-size: 18px;">✓</span>
-                                3-5 page insight brief
-                            </li>
-                            <li style="padding: 12px 0; color: var(--text-secondary); font-size: 16px; display: flex; align-items: center;">
-                                <span style="color: var(--success-color); font-weight: bold; margin-right: 12px; font-size: 18px;">✓</span>
-                                Quick market scan
-                            </li>
-                            <li style="padding: 12px 0; color: var(--text-secondary); font-size: 16px; display: flex; align-items: center;">
-                                <span style="color: var(--success-color); font-weight: bold; margin-right: 12px; font-size: 18px;">✓</span>
-                                2 stakeholder calls
-                            </li>
-                            <li style="padding: 12px 0; color: var(--text-secondary); font-size: 16px; display: flex; align-items: center;">
-                                <span style="color: var(--success-color); font-weight: bold; margin-right: 12px; font-size: 18px;">✓</span>
-                                Slides + Raw data
-                            </li>
-                        </ul>
-                        <a href="#contact" class="enquire-btn">Enquire</a>
-                    </div>
-                    <div class="service-card scroll-reveal">
-                        <h3 class="service-title">Growth Sprint</h3>
-                        <div style="font-size: 40px; font-weight: 800; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin: 16px 0 32px;">On request</div>
-                        <ul style="list-style: none; margin-bottom: 32px; padding: 0;">
-                            <li style="padding: 12px 0; color: var(--text-secondary); font-size: 16px; display: flex; align-items: center;">
-                                <span style="color: var(--success-color); font-weight: bold; margin-right: 12px; font-size: 18px;">✓</span>
-                                3-4 week project
-                            </li>
-                            <li style="padding: 12px 0; color: var(--text-secondary); font-size: 16px; display: flex; align-items: center;">
-                                <span style="color: var(--success-color); font-weight: bold; margin-right: 12px; font-size: 18px;">✓</span>
-                                Sizing + CI actions
-                            </li>
-                            <li style="padding: 12px 0; color: var(--text-secondary); font-size: 16px; display: flex; align-items: center;">
-                                <span style="color: var(--success-color); font-weight: bold; margin-right: 12px; font-size: 18px;">✓</span>
-                                Pipeline insights & enablement
-                            </li>
-                            <li style="padding: 12px 0; color: var(--text-secondary); font-size: 16px; display: flex; align-items: center;">
-                                <span style="color: var(--success-color); font-weight: bold; margin-right: 12px; font-size: 18px;">✓</span>
-                                Slides + Raw data + Sheets
-                            </li>
-                        </ul>
-                        <a href="#contact" class="enquire-btn">Enquire</a>
-                    </div>
-                </div>
-            </section>
+        <!-- Pricing Section -->
+        <section class="section">
+          <div class="section-header scroll-reveal">
+            <h2 class="section-title">Pricing</h2>
+            <p class="section-subtitle">
+              Flexible engagement models to fit your needs and budget
+            </p>
+          </div>
+          <div class="services-grid">
+            <div class="service-card scroll-reveal">
+              <h3 class="service-title" style="color: var(--success-color)">
+                Demo
+              </h3>
+              <div
+                style="
+                  font-size: 40px;
+                  font-weight: 800;
+                  background: var(--gradient-secondary);
+                  -webkit-background-clip: text;
+                  -webkit-text-fill-color: transparent;
+                  background-clip: text;
+                  margin: 16px 0 32px;
+                "
+              >
+                Free
+              </div>
+              <ul style="list-style: none; margin-bottom: 32px; padding: 0">
+                <li
+                  style="
+                    padding: 12px 0;
+                    color: var(--text-secondary);
+                    font-size: 16px;
+                    display: flex;
+                    align-items: center;
+                  "
+                >
+                  <span
+                    style="
+                      color: var(--success-color);
+                      font-weight: bold;
+                      margin-right: 12px;
+                      font-size: 18px;
+                    "
+                    >✓</span
+                  >
+                  Summary slides
+                </li>
+              </ul>
+              <a href="#contact" class="enquire-btn">Enquire</a>
+            </div>
+            <div class="service-card scroll-reveal">
+              <h3 class="service-title">Starter Brief</h3>
+              <div
+                style="
+                  font-size: 40px;
+                  font-weight: 800;
+                  background: var(--gradient-primary);
+                  -webkit-background-clip: text;
+                  -webkit-text-fill-color: transparent;
+                  background-clip: text;
+                  margin: 16px 0 32px;
+                "
+              >
+                On request
+              </div>
+              <ul style="list-style: none; margin-bottom: 32px; padding: 0">
+                <li
+                  style="
+                    padding: 12px 0;
+                    color: var(--text-secondary);
+                    font-size: 16px;
+                    display: flex;
+                    align-items: center;
+                  "
+                >
+                  <span
+                    style="
+                      color: var(--success-color);
+                      font-weight: bold;
+                      margin-right: 12px;
+                      font-size: 18px;
+                    "
+                    >✓</span
+                  >
+                  2 week project
+                </li>
+                <li
+                  style="
+                    padding: 12px 0;
+                    color: var(--text-secondary);
+                    font-size: 16px;
+                    display: flex;
+                    align-items: center;
+                  "
+                >
+                  <span
+                    style="
+                      color: var(--success-color);
+                      font-weight: bold;
+                      margin-right: 12px;
+                      font-size: 18px;
+                    "
+                    >✓</span
+                  >
+                  3-5 page insight brief
+                </li>
+                <li
+                  style="
+                    padding: 12px 0;
+                    color: var(--text-secondary);
+                    font-size: 16px;
+                    display: flex;
+                    align-items: center;
+                  "
+                >
+                  <span
+                    style="
+                      color: var(--success-color);
+                      font-weight: bold;
+                      margin-right: 12px;
+                      font-size: 18px;
+                    "
+                    >✓</span
+                  >
+                  Quick market scan
+                </li>
+                <li
+                  style="
+                    padding: 12px 0;
+                    color: var(--text-secondary);
+                    font-size: 16px;
+                    display: flex;
+                    align-items: center;
+                  "
+                >
+                  <span
+                    style="
+                      color: var(--success-color);
+                      font-weight: bold;
+                      margin-right: 12px;
+                      font-size: 18px;
+                    "
+                    >✓</span
+                  >
+                  2 stakeholder calls
+                </li>
+                <li
+                  style="
+                    padding: 12px 0;
+                    color: var(--text-secondary);
+                    font-size: 16px;
+                    display: flex;
+                    align-items: center;
+                  "
+                >
+                  <span
+                    style="
+                      color: var(--success-color);
+                      font-weight: bold;
+                      margin-right: 12px;
+                      font-size: 18px;
+                    "
+                    >✓</span
+                  >
+                  Slides + Raw data
+                </li>
+              </ul>
+              <a href="#contact" class="enquire-btn">Enquire</a>
+            </div>
+            <div class="service-card scroll-reveal">
+              <h3 class="service-title">Growth Sprint</h3>
+              <div
+                style="
+                  font-size: 40px;
+                  font-weight: 800;
+                  background: var(--gradient-primary);
+                  -webkit-background-clip: text;
+                  -webkit-text-fill-color: transparent;
+                  background-clip: text;
+                  margin: 16px 0 32px;
+                "
+              >
+                On request
+              </div>
+              <ul style="list-style: none; margin-bottom: 32px; padding: 0">
+                <li
+                  style="
+                    padding: 12px 0;
+                    color: var(--text-secondary);
+                    font-size: 16px;
+                    display: flex;
+                    align-items: center;
+                  "
+                >
+                  <span
+                    style="
+                      color: var(--success-color);
+                      font-weight: bold;
+                      margin-right: 12px;
+                      font-size: 18px;
+                    "
+                    >✓</span
+                  >
+                  3-4 week project
+                </li>
+                <li
+                  style="
+                    padding: 12px 0;
+                    color: var(--text-secondary);
+                    font-size: 16px;
+                    display: flex;
+                    align-items: center;
+                  "
+                >
+                  <span
+                    style="
+                      color: var(--success-color);
+                      font-weight: bold;
+                      margin-right: 12px;
+                      font-size: 18px;
+                    "
+                    >✓</span
+                  >
+                  Sizing + CI actions
+                </li>
+                <li
+                  style="
+                    padding: 12px 0;
+                    color: var(--text-secondary);
+                    font-size: 16px;
+                    display: flex;
+                    align-items: center;
+                  "
+                >
+                  <span
+                    style="
+                      color: var(--success-color);
+                      font-weight: bold;
+                      margin-right: 12px;
+                      font-size: 18px;
+                    "
+                    >✓</span
+                  >
+                  Pipeline insights & enablement
+                </li>
+                <li
+                  style="
+                    padding: 12px 0;
+                    color: var(--text-secondary);
+                    font-size: 16px;
+                    display: flex;
+                    align-items: center;
+                  "
+                >
+                  <span
+                    style="
+                      color: var(--success-color);
+                      font-weight: bold;
+                      margin-right: 12px;
+                      font-size: 18px;
+                    "
+                    >✓</span
+                  >
+                  Slides + Raw data + Sheets
+                </li>
+              </ul>
+              <a href="#contact" class="enquire-btn">Enquire</a>
+            </div>
+          </div>
+        </section>
 
-            <!-- Case Studies Section -->
-            <section id="case-studies" class="section">
-                <div class="section-header scroll-reveal">
-                    <div class="section-badge">Success Stories</div>
-                    <h2 class="section-title">Case Studies</h2>
-                    <p class="section-subtitle">Real results from real projects that drove strategic decisions</p>
-                </div>
-                <div class="case-studies">
-                    <div class="case-study scroll-reveal">
-                        <div class="case-result">Result: 15% impact on strategic decisions</div>
-                        <h3 class="case-title">Interconnect Products: Expansion Play</h3>
-                        <p class="case-summary">Mapped growth in hydrogen, batteries, and semiconductors; prioritized 12 sub-segments with quantified TAM/SAM/SOM; built geographic rollout plan.</p>
-                    </div>
-                    <div class="case-study scroll-reveal">
-                        <div class="case-result">Result: 20% impact on strategic decisions</div>
-                        <h3 class="case-title">Industrial Automation Products in Machineries</h3>
-                        <p class="case-summary">Mapped growth in semiconductors, PCB dispensing, Medical equipment's cables, solar, batteries; prioritized sub-segments with quantified TAM/SAM/SOM.</p>
-                    </div>
-                    <div class="case-study scroll-reveal">
-                        <div class="case-result">Result: 200+ qualified leads; 10+ new opps</div>
-                        <h3 class="case-title">Lead Gen via Insights</h3>
-                        <p class="case-summary">Company profiling, Target lists, Contact details.</p>
-                    </div>
-                </div>
-            </section>
+        <!-- Case Studies Section -->
+        <section id="case-studies" class="section">
+          <div class="section-header scroll-reveal">
+            <h2 class="section-title">Case Studies</h2>
+            <p class="section-subtitle">
+              Real results from real projects that drove strategic decisions
+            </p>
+          </div>
+          <div class="case-studies">
+            <div class="case-study scroll-reveal">
+              <div class="case-result">
+                Result: 15% impact on strategic decisions
+              </div>
+              <h3 class="case-title">Interconnect Products: Expansion Play</h3>
+              <p class="case-summary">
+                Mapped growth in hydrogen, batteries, and semiconductors;
+                prioritized 12 sub-segments with quantified TAM/SAM/SOM; built
+                geographic rollout plan.
+              </p>
+            </div>
+            <div class="case-study scroll-reveal">
+              <div class="case-result">
+                Result: 20% impact on strategic decisions
+              </div>
+              <h3 class="case-title">
+                Industrial Automation Products in Machineries
+              </h3>
+              <p class="case-summary">
+                Mapped growth in semiconductors, PCB dispensing, Medical
+                equipment's cables, solar, batteries; prioritized sub-segments
+                with quantified TAM/SAM/SOM.
+              </p>
+            </div>
+            <div class="case-study scroll-reveal">
+              <div class="case-result">
+                Result: 200+ qualified leads; 10+ new opps
+              </div>
+              <h3 class="case-title">Lead Gen via Insights</h3>
+              <p class="case-summary">
+                Company profiling, Target lists, Contact details.
+              </p>
+            </div>
+          </div>
+        </section>
 
-            <!-- Contact Section -->
-            <section id="contact" class="section">
-                <div class="section-header scroll-reveal">
-                    <div class="section-badge">Let's Connect</div>
-                    <h2 class="section-title">Contact</h2>
-                    <p class="section-subtitle">Ready to transform your market strategy? Let's discuss your project</p>
-                </div>
-                <form class="contact-form scroll-reveal">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" placeholder="Your name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" placeholder="you@company.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">What do you need?</label>
-                        <textarea id="message" name="message" placeholder="Describe your project or requirements..." required></textarea>
-                    </div>
-                    <div style="text-align: center;">
-                        <button type="submit" class="enquire-btn">Send Message</button>
-                    </div>
-                </form>
-            </section>
-        </div>
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+          <div class="section-header scroll-reveal">
+            <h2 class="section-title">Contact</h2>
+            <p class="section-subtitle">
+              Ready to transform your market strategy? Let's discuss your
+              project
+            </p>
+          </div>
+          <div class="contact-cards-container scroll-reveal">
+            <div class="contact-card">
+              <div class="contact-icon email-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                  <polyline points="22,6 12,13 2,6"/>
+                </svg>
+              </div>
+              <div class="contact-details">
+                <h4 class="contact-label">Email</h4>
+                <a href="mailto:gkinsights360@gmail.com" class="contact-value">
+                  gkinsights360@gmail.com
+                </a>
+              </div>
+            </div>
+            
+            <div class="contact-card">
+              <div class="contact-icon phone-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+              </div>
+              <div class="contact-details">
+                <h4 class="contact-label">Phone</h4>
+                <a href="tel:+916383319328" class="contact-value">
+                  +91 6383319328
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
     </div>
 
     <script>
-        // Premium Navigation Scroll Effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 100) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
 
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
+      // Premium Navigation Scroll Effect
+      window.addEventListener("scroll", () => {
+        const navbar = document.getElementById("navbar");
+        if (window.scrollY > 100) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+      });
+
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
             });
+          }
         });
+      });
 
-        // Premium form handling
-        document.querySelector('.contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const submitBtn = this.querySelector('button[type="submit"]');
-            const originalText = submitBtn.textContent;
-            
-            // Loading animation
-            submitBtn.textContent = 'Sending...';
-            submitBtn.disabled = true;
-            submitBtn.style.opacity = '0.7';
-            
-            // Simulate form submission
+
+      // Enhanced scroll reveal animation
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -100px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+          if (entry.isIntersecting) {
             setTimeout(() => {
-                submitBtn.textContent = 'Message Sent!';
-                submitBtn.style.background = 'var(--gradient-secondary)';
-                
-                setTimeout(() => {
-                    alert('Thank you for your message! I will get back to you soon.');
-                    this.reset();
-                    submitBtn.textContent = originalText;
-                    submitBtn.disabled = false;
-                    submitBtn.style.opacity = '1';
-                    submitBtn.style.background = 'var(--gradient-primary)';
-                }, 1000);
-            }, 1500);
+              entry.target.classList.add("revealed");
+            }, index * 100);
+          }
+        });
+      }, observerOptions);
+
+      // Apply animation to all scroll-reveal elements
+      document.querySelectorAll(".scroll-reveal").forEach((el) => {
+        observer.observe(el);
+      });
+
+      // Enhanced parallax effect for hero background
+      window.addEventListener("scroll", () => {
+        const scrolled = window.pageYOffset;
+        const rate = scrolled * -0.3;
+
+        const bgMesh = document.querySelector(".bg-mesh");
+        if (bgMesh) {
+          bgMesh.style.transform = `translateY(${rate}px) rotate(${
+            scrolled * 0.05
+          }deg)`;
+        }
+      });
+
+      // Premium typing effect for hero tagline
+      const tagline = document.querySelector(".hero-tagline");
+      const text = tagline.textContent;
+      tagline.textContent = "";
+
+      let i = 0;
+      const typeWriter = () => {
+        if (i < text.length) {
+          tagline.textContent += text.charAt(i);
+          i++;
+          setTimeout(typeWriter, 60);
+        }
+      };
+
+      // Start typing effect after initial animations
+      setTimeout(typeWriter, 1400);
+
+      // Add premium loading animation
+      window.addEventListener("load", () => {
+        document.body.style.opacity = "0";
+        setTimeout(() => {
+          document.body.style.transition = "opacity 0.5s ease";
+          document.body.style.opacity = "1";
+        }, 100);
+      });
+
+      // Enhanced button interactions
+      document.querySelectorAll(".btn").forEach((btn) => {
+        btn.addEventListener("mouseenter", function () {
+          this.style.transform = "translateY(-4px) scale(1.02)";
         });
 
-        // Enhanced scroll reveal animation
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry, index) => {
-                if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        entry.target.classList.add('revealed');
-                    }, index * 100);
-                }
-            });
-        }, observerOptions);
-
-        // Apply animation to all scroll-reveal elements
-        document.querySelectorAll('.scroll-reveal').forEach(el => {
-            observer.observe(el);
+        btn.addEventListener("mouseleave", function () {
+          this.style.transform = "translateY(0) scale(1)";
         });
+      });
 
-        // Enhanced parallax effect for hero background
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const rate = scrolled * -0.3;
-            
-            const bgMesh = document.querySelector('.bg-mesh');
-            const analytics = document.querySelectorAll('.analytics-element');
-            
-            if (bgMesh) {
-                bgMesh.style.transform = `translateY(${rate}px) rotate(${scrolled * 0.05}deg)`;
-            }
-            
-            analytics.forEach((element, index) => {
-                const speed = 0.2 + (index * 0.1);
-                const yPos = scrolled * -speed;
-                element.style.transform = `translateY(${yPos}px) rotate(${scrolled * 0.02}deg)`;
-            });
-        });
+      // Add premium cursor effect
+      document.addEventListener("mousemove", (e) => {
+        const cursor = document.createElement("div");
+        cursor.style.position = "fixed";
+        cursor.style.left = e.clientX + "px";
+        cursor.style.top = e.clientY + "px";
+        cursor.style.width = "10px";
+        cursor.style.height = "10px";
+        cursor.style.background = "rgba(0, 102, 255, 0.3)";
+        cursor.style.borderRadius = "50%";
+        cursor.style.pointerEvents = "none";
+        cursor.style.zIndex = "9999";
+        cursor.style.animation = "cursorFade 0.5s ease-out";
 
-        // Premium typing effect for hero tagline
-        const tagline = document.querySelector('.hero-tagline');
-        const text = tagline.textContent;
-        tagline.textContent = '';
-        
-        let i = 0;
-        const typeWriter = () => {
-            if (i < text.length) {
-                tagline.textContent += text.charAt(i);
-                i++;
-                setTimeout(typeWriter, 60);
-            }
-        };
-        
-        // Start typing effect after initial animations
-        setTimeout(typeWriter, 1400);
+        document.body.appendChild(cursor);
 
-        // Add premium loading animation
-        window.addEventListener('load', () => {
-            document.body.style.opacity = '0';
-            setTimeout(() => {
-                document.body.style.transition = 'opacity 0.5s ease';
-                document.body.style.opacity = '1';
-            }, 100);
-        });
+        setTimeout(() => {
+          cursor.remove();
+        }, 500);
+      });
 
-        // Enhanced button interactions
-        document.querySelectorAll('.btn').forEach(btn => {
-            btn.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-4px) scale(1.02)';
-            });
-            
-            btn.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) scale(1)';
-            });
-        });
-
-        // Add premium cursor effect
-        document.addEventListener('mousemove', (e) => {
-            const cursor = document.createElement('div');
-            cursor.style.position = 'fixed';
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-            cursor.style.width = '10px';
-            cursor.style.height = '10px';
-            cursor.style.background = 'rgba(0, 102, 255, 0.3)';
-            cursor.style.borderRadius = '50%';
-            cursor.style.pointerEvents = 'none';
-            cursor.style.zIndex = '9999';
-            cursor.style.animation = 'cursorFade 0.5s ease-out';
-            
-            document.body.appendChild(cursor);
-            
-            setTimeout(() => {
-                cursor.remove();
-            }, 500);
-        });
-
-        // Add cursor fade animation
-        const style = document.createElement('style');
-        style.textContent = `
+      // Add cursor fade animation
+      const style = document.createElement("style");
+      style.textContent = `
             @keyframes cursorFade {
                 0% { opacity: 1; transform: scale(1); }
                 100% { opacity: 0; transform: scale(0); }
             }
         `;
-        document.head.appendChild(style);
+      document.head.appendChild(style);
     </script>
-</body>
+  </body>
 </html>
