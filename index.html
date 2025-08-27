@@ -34,8 +34,8 @@
         --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.12);
         --shadow-xl: 0 24px 64px rgba(0, 0, 0, 0.15);
         --shadow-glow: 0 0 40px rgba(0, 102, 255, 0.15);
-        --gradient-primary: linear-gradient(135deg, #0066ff 0%, #8b5cf6 100%);
-        --gradient-secondary: linear-gradient(135deg, #06b6d4 0%, #10b981 100%);
+        --gradient-primary: linear-gradient(135deg, #00407d 0%, #8b5cf6 100%);
+        --gradient-secondary: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
         --gradient-accent: linear-gradient(135deg, #ff6b6b 0%, #ffe66d 100%);
         --gradient-glass: linear-gradient(
           135deg,
@@ -148,13 +148,13 @@
         right: 0;
         z-index: 1000;
         backdrop-filter: blur(20px) saturate(180%);
-        background: var(--bg-glass);
-        border-bottom: 1px solid var(--border-glass);
+        background: #00407d;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
       .nav.scrolled {
-        background: rgba(255, 255, 255, 0.95);
+        background: #00407d;
         backdrop-filter: blur(20px);
         box-shadow: var(--shadow-md);
       }
@@ -180,7 +180,7 @@
       }
 
       .nav.scrolled .nav-brand {
-        background: var(--gradient-primary);
+        background: linear-gradient(135deg, #66B3FF 0%, #E6B3FF 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -204,7 +204,7 @@
       }
 
       .nav.scrolled .nav-links a {
-        color: var(--text-primary);
+        color: white;
       }
 
       .nav-links a::before {
@@ -1573,14 +1573,14 @@
           </div>
           <div class="services-grid">
             <div class="service-card scroll-reveal">
-              <h3 class="service-title" style="color: var(--success-color)">
+              <h3 class="service-title">
                 Demo
               </h3>
               <div
                 style="
                   font-size: 40px;
                   font-weight: 800;
-                  background: var(--gradient-secondary);
+                  background: var(--gradient-primary);
                   -webkit-background-clip: text;
                   -webkit-text-fill-color: transparent;
                   background-clip: text;
@@ -1611,7 +1611,6 @@
                   Summary slides
                 </li>
               </ul>
-              <a href="#contact" class="enquire-btn">Enquire</a>
             </div>
             <div class="service-card scroll-reveal">
               <h3 class="service-title">Starter Brief</h3>
@@ -1730,7 +1729,6 @@
                   Slides + Raw data
                 </li>
               </ul>
-              <a href="#contact" class="enquire-btn">Enquire</a>
             </div>
             <div class="service-card scroll-reveal">
               <h3 class="service-title">Growth Sprint</h3>
@@ -1829,7 +1827,6 @@
                   Slides + Raw data + Sheets
                 </li>
               </ul>
-              <a href="#contact" class="enquire-btn">Enquire</a>
             </div>
           </div>
         </section>
