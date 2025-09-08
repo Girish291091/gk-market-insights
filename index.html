@@ -33,9 +33,9 @@
         --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
         --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.12);
         --shadow-xl: 0 24px 64px rgba(0, 0, 0, 0.15);
-        --shadow-glow: 0 0 40px rgba(0, 102, 255, 0.15);
-        --gradient-primary: linear-gradient(135deg, #00407d 0%, #8b5cf6 100%);
-        --gradient-secondary: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
+        --shadow-glow: 0 0 40px rgba(8, 145, 178, 0.15);
+        --gradient-primary: linear-gradient(135deg, #00407d 0%, #0891b2 100%);
+        --gradient-secondary: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%);
         --gradient-accent: linear-gradient(135deg, #ff6b6b 0%, #ffe66d 100%);
         --gradient-glass: linear-gradient(
           135deg,
@@ -59,6 +59,7 @@
         min-height: 100vh;
         overflow-x: hidden;
         scroll-behavior: smooth;
+        scroll-padding-top: 0;
       }
 
       .container {
@@ -86,7 +87,7 @@
         height: 200%;
         background: radial-gradient(
             circle at 20% 80%,
-            rgba(139, 92, 246, 0.15) 0%,
+            rgba(8, 145, 178, 0.15) 0%,
             transparent 50%
           ),
           radial-gradient(
@@ -179,7 +180,7 @@
       }
 
       .nav.scrolled .nav-brand {
-        background: linear-gradient(135deg, #66b3ff 0%, #e6b3ff 100%);
+        background: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -278,7 +279,7 @@
         display: flex;
         align-items: center;
         color: white;
-        padding: 120px 0 80px;
+        padding: 100px 0 40px;
         z-index: 1;
       }
 
@@ -301,7 +302,7 @@
         border: 1px solid var(--border-glass);
         font-size: 14px;
         font-weight: 500;
-        margin-bottom: 32px;
+        margin: 32px;
         animation: fadeInUp 0.8s ease-out;
         position: relative;
         overflow: hidden;
@@ -554,21 +555,21 @@
           var(--bg-secondary) 100%
         );
         border-radius: 48px 48px 0 0;
-        margin-top: 80px;
-        padding: 120px 0;
+        margin-top: 40px;
+        padding: 60px 0;
         position: relative;
         z-index: 2;
         box-shadow: 0 -20px 80px rgba(0, 0, 0, 0.1);
       }
 
       .section {
-        margin-bottom: 160px;
+        margin-bottom: 80px;
         position: relative;
       }
 
       .section-header {
         text-align: center;
-        margin-bottom: 80px;
+        margin-bottom: 40px;
         position: relative;
       }
 
@@ -776,15 +777,15 @@
       .pill {
         background: linear-gradient(
           135deg,
-          rgba(0, 102, 255, 0.1) 0%,
-          rgba(139, 92, 246, 0.1) 100%
+          rgba(8, 145, 178, 0.1) 0%,
+          rgba(6, 182, 212, 0.1) 100%
         );
         color: var(--primary-color);
         padding: 12px 24px;
         border-radius: 50px;
         font-size: 14px;
         font-weight: 600;
-        border: 1px solid rgba(0, 102, 255, 0.2);
+        border: 1px solid rgba(8, 145, 178, 0.2);
         transition: all 0.3s ease;
         letter-spacing: 0.3px;
       }
@@ -1008,18 +1009,88 @@
       }
 
       @media (max-width: 768px) {
+        .container {
+          padding: 0 16px;
+        }
+
         .hero {
-          padding: 100px 0 60px;
+          padding: 80px 0 40px;
+        }
+
+        .hero h1 {
+          font-size: clamp(32px, 8vw, 48px);
+          line-height: 1.2;
+        }
+
+        .hero-tagline {
+          font-size: 20px;
+        }
+
+        .hero-description {
+          font-size: 16px;
+          line-height: 1.6;
+        }
+
+        .section-title {
+          font-size: clamp(28px, 6vw, 40px);
+        }
+
+        .section-subtitle {
+          font-size: 16px;
         }
 
         .stats-row {
           grid-template-columns: repeat(2, 1fr);
-          gap: 24px;
+          gap: 16px;
+          margin: 40px 0;
+        }
+
+        .stat {
+          padding: 24px 16px;
+        }
+
+        .stat-value {
+          font-size: 28px;
         }
 
         .hero-buttons {
           flex-direction: column;
           align-items: center;
+          gap: 16px;
+        }
+
+        .btn {
+          width: 100%;
+          max-width: 280px;
+          justify-content: center;
+        }
+
+        .services-grid,
+        .case-studies {
+          grid-template-columns: 1fr;
+          gap: 24px;
+        }
+
+        .service-card {
+          padding: 32px 20px;
+        }
+
+        .service-title {
+          font-size: 22px;
+        }
+
+        .nav-brand {
+          font-size: 20px;
+        }
+
+        .nav-inner {
+          padding: 16px 0;
+        }
+
+        .contact-cards-container {
+          grid-template-columns: 1fr;
+          gap: 20px;
+          padding: 20px 0;
         }
 
         .contact-form {
@@ -1028,22 +1099,100 @@
         }
 
         .section {
-          margin-bottom: 120px;
+          margin-bottom: 60px;
+        }
+
+        .main-content {
+          padding: 40px 0;
         }
       }
 
       @media (max-width: 480px) {
+        .container {
+          padding: 0 12px;
+        }
+
+        .hero h1 {
+          font-size: clamp(24px, 7vw, 36px);
+        }
+
+        .hero-tagline {
+          font-size: 18px;
+        }
+
+        .hero-description {
+          font-size: 14px;
+        }
+
+        .section-title {
+          font-size: clamp(24px, 6vw, 32px);
+        }
+
+        .section-subtitle {
+          font-size: 14px;
+        }
+
         .stats-row {
           grid-template-columns: 1fr;
+          gap: 12px;
+        }
+
+        .stat {
+          padding: 20px 12px;
+        }
+
+        .stat-value {
+          font-size: 24px;
         }
 
         .service-card,
         .case-study {
-          padding: 32px 24px;
+          padding: 24px 16px;
+        }
+
+        .service-title {
+          font-size: 20px;
+        }
+
+        .service-icon {
+          font-size: 40px;
+          margin-bottom: 20px;
+        }
+
+        .case-title {
+          font-size: 20px;
+        }
+
+        .nav-brand {
+          font-size: 18px;
+        }
+
+        .contact-card {
+          padding: 24px 16px;
         }
 
         .contact-form {
-          padding: 32px 24px;
+          padding: 24px 16px;
+        }
+
+        .btn {
+          padding: 14px 24px;
+          font-size: 14px;
+        }
+
+        .hero-badge {
+          font-size: 12px;
+          padding: 8px 16px;
+          margin-bottom: 24px;
+        }
+
+        .pills-container {
+          gap: 12px;
+        }
+
+        .pill {
+          padding: 8px 16px;
+          font-size: 12px;
         }
       }
 
@@ -1463,7 +1612,7 @@
             </p>
           </div>
           <div class="services-grid">
-            <div class="service-card scroll-reveal" style="text-align: left">
+            <div class="service-card scroll-reveal" style="text-align: left; display: flex; flex-direction: column; justify-content: space-between; min-height: 200px;">
               <p
                 style="
                   font-style: italic;
@@ -1471,17 +1620,18 @@
                   margin-bottom: 24px;
                   font-size: 18px;
                   line-height: 1.7;
+                  flex-grow: 1;
                 "
               >
                 "Girish is a committed and detail-oriented professional who
                 quickly understands complex topics and delivers valuable
                 insights."
               </p>
-              <div style="font-weight: 700; color: var(--primary-color)">
+              <div style="font-weight: 700; color: var(--primary-color); margin-top: auto;">
                 Director, Interconnects (EU)
               </div>
             </div>
-            <div class="service-card scroll-reveal" style="text-align: left">
+            <div class="service-card scroll-reveal" style="text-align: left; display: flex; flex-direction: column; justify-content: space-between; min-height: 200px;">
               <p
                 style="
                   font-style: italic;
@@ -1489,16 +1639,17 @@
                   margin-bottom: 24px;
                   font-size: 18px;
                   line-height: 1.7;
+                  flex-grow: 1;
                 "
               >
                 "I highly recommend Girish for market research. He consistently
                 delivers exceptional results, exceeding expectations."
               </p>
-              <div style="font-weight: 700; color: var(--primary-color)">
+              <div style="font-weight: 700; color: var(--primary-color); margin-top: auto;">
                 Research Manager, (APAC)
               </div>
             </div>
-            <div class="service-card scroll-reveal" style="text-align: left">
+            <div class="service-card scroll-reveal" style="text-align: left; display: flex; flex-direction: column; justify-content: space-between; min-height: 200px;">
               <p
                 style="
                   font-style: italic;
@@ -1506,12 +1657,13 @@
                   margin-bottom: 24px;
                   font-size: 18px;
                   line-height: 1.7;
+                  flex-grow: 1;
                 "
               >
                 "The lead-gen insights directly fueled pipeline. Highly
                 recommend."
               </p>
-              <div style="font-weight: 700; color: var(--primary-color)">
+              <div style="font-weight: 700; color: var(--primary-color); margin-top: auto;">
                 Head of Sales, Components (EU)
               </div>
             </div>
@@ -1857,8 +2009,8 @@
               </div>
               <div class="contact-details">
                 <h4 class="contact-label">Email</h4>
-                <a href="mailto:gkinsights360@gmail.com" class="contact-value">
-                  gkinsights360@gmail.com
+                <a href="mailto:gkmarketinsights@gmail.com" class="contact-value">
+                  gkmarketinsights@gmail.com
                 </a>
               </div>
             </div>
@@ -1966,14 +2118,24 @@
       // Start typing effect after initial animations
       setTimeout(typeWriter, 1400);
 
-      // Add premium loading animation
+      // Add premium loading animation and ensure page loads at top
       window.addEventListener("load", () => {
         document.body.style.opacity = "0";
         setTimeout(() => {
           document.body.style.transition = "opacity 0.5s ease";
           document.body.style.opacity = "1";
+          // Ensure page loads at top
+          window.scrollTo(0, 0);
         }, 100);
       });
+
+      // Force page to top on refresh
+      if ("scrollRestoration" in history) {
+        history.scrollRestoration = "manual";
+      }
+      window.onbeforeunload = function() {
+        window.scrollTo(0, 0);
+      };
 
       // Enhanced button interactions
       document.querySelectorAll(".btn").forEach((btn) => {
